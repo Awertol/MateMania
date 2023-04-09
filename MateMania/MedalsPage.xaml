@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MateMania.MedalsPage"
+             Title="MedalsPage">
+    <VerticalStackLayout
+        Spacing="25"
+        Padding="30,0"
+        Margin="0,60,0,0"
+        VerticalOptions="Start">
+        <Label 
+            Text="TVÉ MEDAILE"
+            VerticalOptions="Start" 
+            HorizontalOptions="Center" 
+            FontSize="36"/>
+        <Grid HorizontalOptions="Center" Padding="100,10,100,10">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Image Source="gold.png" MaximumHeightRequest="145" HorizontalOptions="Start" Grid.Row="0" Grid.Column="0"/>
+            <Label Text="17" x:Name="lbGold" FontSize="24" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
+            <Image Source="silver.png" MaximumHeightRequest="135" HorizontalOptions="Center" Grid.Row="1" Grid.Column="0"/>
+            <Label Text="8" x:Name="lbSilver" FontSize="24" HorizontalOptions="Center" Grid.Row="1" Grid.Column="1"/>
+            <Image Source="bronze.png" MaximumHeightRequest="125" HorizontalOptions="End" Grid.Row="2" Grid.Column="0"/>
+            <Label Text="4" x:Name="lbBronze" FontSize="24" HorizontalOptions="Center" Grid.Row="2" Grid.Column="1"/>
+        </Grid>
+        <Button Text="⬅️ ZPĚT" x:Name="btnMenu" HorizontalOptions="Center" VerticalOptions="Start" />
+    </VerticalStackLayout>
+</ContentPage>

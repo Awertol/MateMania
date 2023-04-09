@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MateMania.ChangeInfoPage"
+             Title="ChangeInfoPage">
+    <VerticalStackLayout
+        Spacing="25"
+        Padding="30,0"
+        Margin="0,60,0,0"
+        VerticalOptions="Start">
+        <Label 
+            Text="ZMĚNA ÚDAJŮ"
+            FontSize="36"
+            FontAttributes="Bold"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <StackLayout>
+            <Label Text="PŘEZDÍVKA"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Center"/>
+            <Entry x:Name="entPrezdivka" FontSize="24" VerticalOptions="Start" HorizontalOptions="Center" MinimumWidthRequest="150" MinimumHeightRequest="50"/>
+            <Label Text="ZÁKLADNÍ ŠKOLA"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Center"/>
+            <Picker x:Name="pckZakladniSkoly" FontSize="24" VerticalOptions="Start" HorizontalOptions="Center" MinimumWidthRequest="150" MinimumHeightRequest="50"/>
+            <Label Text="JMÉNO"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Center"/>
+            <Entry x:Name="entJmeno" FontSize="24" VerticalOptions="Start" HorizontalOptions="Center" MinimumWidthRequest="150" MinimumHeightRequest="50"/>
+            <Label Text="PŘÍJMENÍ"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Center"/>
+            <Entry x:Name="entPrijmeni" FontSize="24" VerticalOptions="Start" HorizontalOptions="Center" MinimumWidthRequest="150" MinimumHeightRequest="50"/>
+            <Label Text="HESLO"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Center"/>
+            <Entry x:Name="entNoveHeslo" FontSize="24" VerticalOptions="Start" HorizontalOptions="Center" MinimumWidthRequest="150" MinimumHeightRequest="50" Keyboard="Numeric"/>
+            <Button x:Name="btnZmenit" Text="ZMĚNIT" FontSize="28" VerticalOptions="Start" HorizontalOptions="Center" MinimumWidthRequest="150" MinimumHeightRequest="50"/>
+        </StackLayout>
+        <Button x:Name="btnMenu" Text="MENU" FontSize="24" VerticalOptions="Start" HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>
