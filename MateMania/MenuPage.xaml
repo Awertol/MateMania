@@ -28,7 +28,7 @@
             HorizontalOptions="Center" />
         <ProgressBar x:Name="pbUzivExp" ProgressColor="{StaticResource Primary}" Progress="0.58" MinimumHeightRequest="15"/>
         <Button x:Name="btnProcvicovani" FontAttributes="Bold" FontSize="24" Text="PROCVIČOVÁNÍ" BackgroundColor="DarkCyan" Clicked="btnProcvicovani_Clicked"/>
-        <Button x:Name="btnOnline" FontAttributes="Bold" FontSize="24" Text="ONLINE" BackgroundColor="DarkCyan"/>
+        <Button x:Name="btnOnline" FontAttributes="Bold" FontSize="24" Text="ONLINE" BackgroundColor="DarkCyan" Clicked="btnOnline_Clicked"/>
         <Button x:Name="btnVysledky" FontAttributes="Bold" FontSize="24" Text="Medaile" BackgroundColor="DarkCyan" Clicked="btnVysledky_Clicked"/>
         <Button x:Name="btnTituly" FontAttributes="Bold" FontSize="24" Text="Tituly" BackgroundColor="DarkCyan" Clicked="btnTituly_Clicked"/>
     </VerticalStackLayout>

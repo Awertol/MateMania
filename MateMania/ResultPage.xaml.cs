@@ -22,5 +22,20 @@ public partial class ResultPage : ContentPage
 		{
 			imgVysledek.Source = "amogus.png";
 		}
+		if(OfflineOnline.stavPripojeni == true)
+		{
+            if (vysledek >= 7)
+            {
+                DbData.ZmenitMedaili(3);
+            }
+            else if (vysledek >= 5)
+            {
+                DbData.ZmenitMedaili(2);
+            }
+            else if (vysledek >= 3)
+            {
+                DbData.ZmenitMedaili(1);
+            }
+        }
 	}
 }

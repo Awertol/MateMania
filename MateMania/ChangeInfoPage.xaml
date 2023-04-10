@@ -44,8 +44,8 @@
                    FontAttributes="Bold"
                    VerticalOptions="Start"
                    HorizontalOptions="Center"/>
-            <Entry x:Name="entNoveHeslo" FontSize="24" VerticalOptions="Start" HorizontalOptions="Center" MinimumWidthRequest="150" MinimumHeightRequest="50" Keyboard="Numeric"/>
-            <Button x:Name="btnZmenit" Text="ZMĚNIT" FontSize="28" VerticalOptions="Start" HorizontalOptions="Center" MinimumWidthRequest="150" MinimumHeightRequest="50"/>
+            <Entry x:Name="entNoveHeslo" FontSize="24" VerticalOptions="Start" HorizontalOptions="Center" MinimumWidthRequest="150" MinimumHeightRequest="50" Keyboard="Numeric" MaxLength="5"/>
+            <Button x:Name="btnZmenit" Text="ZMĚNIT" FontSize="28" VerticalOptions="Start" HorizontalOptions="Center" MinimumWidthRequest="150" MinimumHeightRequest="50" Clicked="btnZmenit_Clicked"/>
         </StackLayout>
         <Button x:Name="btnMenu" Text="MENU" FontSize="24" VerticalOptions="Start" HorizontalOptions="Center" />
     </VerticalStackLayout>

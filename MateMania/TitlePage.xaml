@@ -4,7 +4,7 @@
              x:Class="MateMania.TitlePage"
              Title="TitlePage">
     <VerticalStackLayout
-        Spacing="25"
+        Spacing="10"
         Padding="30,0"
         Margin="0,60,0,0"
         VerticalOptions="Start">
@@ -39,7 +39,7 @@
             <Label x:Name="lbTitul3"
                    Text="'Noční sova'" FontSize="24"/>
             <Label x:Name="lbTitul3_popis"
-                   Text="Dokonči cvičení mezi 11 hodinou večer a 6 hodinou ráno" FontSize="22" FontAttributes="Italic, Bold"/>
+                   Text="Dokonči cvičení mezi 10 hodinou večer a 6 hodinou ráno" FontSize="22" FontAttributes="Italic, Bold"/>
             <Label MaximumHeightRequest="5" MinimumHeightRequest="5" BackgroundColor="{StaticResource Primary}" HorizontalOptions="FillAndExpand" Margin="-100,10,-100,10"/>
             <Label x:Name="lbTitul4"
                    Text="'Zlatý mistr'" FontSize="24"/>
@@ -54,7 +54,7 @@
             <Label x:Name="lbTitul6"
                    Text="'Řešitel záhad'" FontSize="24"/>
             <Button x:Name="btnZahada"
-                   Text="Vyzkoušet" FontSize="28" FontAttributes="Bold"/>
+                   Text="Vyzkoušet" FontSize="28" FontAttributes="Bold" Clicked="btnZahada_Clicked"/>
             <Label MaximumHeightRequest="5" MinimumHeightRequest="5" BackgroundColor="{StaticResource Primary}" HorizontalOptions="FillAndExpand" Margin="-100,10,-100,10"/>
         </StackLayout>
         <Button x:Name="btnMenu"

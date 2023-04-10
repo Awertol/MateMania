@@ -12,17 +12,30 @@ public partial class MainPage : ContentPage
 		{
 			btnLogin.IsEnabled = false;
 			btnRegistrovat.IsEnabled = false;
+			entryUzJmeno.IsEnabled = false;
+			entryUzHeslo.IsEnabled = false;
+			OfflineOnline.stavPripojeni = false;
 		}
+		else
+		{
+			DbData.NastavClient();
+            OfflineOnline.stavPripojeni = true;
+        }
 	}
 
-    private void btnLogin_Clicked(object sender, EventArgs e)
+    private async void btnLogin_Clicked(object sender, EventArgs e)
     {
-		//if()
-		//{
-
-		//}
-		MenuPage menuStranka = new MenuPage(entryUzJmeno.Text);
-		Navigation.PushAsync(menuStranka);
+		Task<UserModel> uzivatel = DbData.LoginUzivatele(entryUzJmeno.Text, entryUzHeslo.Text);
+		UserModel uz = await uzivatel;
+		if (uz != null)
+		{
+			MenuPage menuStranka = new MenuPage();
+			Navigation.PushAsync(menuStranka);
+		}
+		else
+		{
+			DisplayAlert("Chyba", "Neplatné přihlašovací údaje", "OK");
+		}
     }
 
     private void btnRegistrovat_Clicked(object sender, EventArgs e)
@@ -32,7 +45,8 @@ public partial class MainPage : ContentPage
     }
     private void btnOffline_Clicked(object sender, EventArgs e)
     {
-
+		MenuPage menuStranka = new MenuPage();
+		Navigation.PushAsync(menuStranka);
     }
 }
 

@@ -24,11 +24,11 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Image Source="gold.png" MaximumHeightRequest="145" HorizontalOptions="Start" Grid.Row="0" Grid.Column="0"/>
-            <Label Text="17" x:Name="lbGold" FontSize="24" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
+            <Label x:Name="lbGold" FontSize="24" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
             <Image Source="silver.png" MaximumHeightRequest="135" HorizontalOptions="Center" Grid.Row="1" Grid.Column="0"/>
-            <Label Text="8" x:Name="lbSilver" FontSize="24" HorizontalOptions="Center" Grid.Row="1" Grid.Column="1"/>
+            <Label x:Name="lbSilver" FontSize="24" HorizontalOptions="Center" Grid.Row="1" Grid.Column="1"/>
             <Image Source="bronze.png" MaximumHeightRequest="125" HorizontalOptions="End" Grid.Row="2" Grid.Column="0"/>
-            <Label Text="4" x:Name="lbBronze" FontSize="24" HorizontalOptions="Center" Grid.Row="2" Grid.Column="1"/>
+            <Label x:Name="lbBronze" FontSize="24" HorizontalOptions="Center" Grid.Row="2" Grid.Column="1"/>
         </Grid>
         <Button Text="⬅️ ZPĚT" x:Name="btnMenu" HorizontalOptions="Center" VerticalOptions="Start" />
     </VerticalStackLayout>
