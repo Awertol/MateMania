@@ -2,7 +2,16 @@ namespace MateMania;
 
 public partial class TitlePage : ContentPage
 {
-	List<string> tituly = new List<string>();
+    List<string> tituly = new List<string>();
+    public static Dictionary<string, int> slovnikTitulu = new Dictionary<string, int>
+    {
+        {"Èlen smeèky", 1},
+        {"Noèní sova", 2},
+        {"Zlatý mistr", 3},
+        {"Mistr matematiky", 4},
+        {"Legenda", 5},
+        {"Øešitel záhad", 6 }
+    };
 	public TitlePage()
 	{
 		InitializeComponent();
@@ -52,11 +61,21 @@ public partial class TitlePage : ContentPage
         {
             DbData.ZmenitTitul(4);
         }
+        if (ExpCounter.Level == 6)
+        {
+            DbData.ZmenitTitul(5);
+        }
     }
 
     private void btnZahada_Clicked(object sender, EventArgs e)
     {
         QuestionPage zahadaStranka = new QuestionPage();
         Navigation.PushAsync(zahadaStranka);
+    }
+
+    private void pckTituly_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        int cisloTitulu = slovnikTitulu[pckTituly.SelectedItem as string];
+        DbData.NastavitTitul(cisloTitulu);
     }
 }

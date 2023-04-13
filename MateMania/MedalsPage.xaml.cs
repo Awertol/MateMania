@@ -9,4 +9,9 @@ public partial class MedalsPage : ContentPage
         lbSilver.Text = DbData.nactenyUzivatel.SilverMedals.ToString();
         lbGold.Text = DbData.nactenyUzivatel.GoldMedals.ToString();
     }
+
+    private void btnMenu_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PopAsync();
+    }
 }

@@ -2,7 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MateMania.RegisterPage"
-             Title="RegisterPage">
+             Title="">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
     <VerticalStackLayout
         Spacing="25"
         Padding="30,0"
@@ -16,5 +19,6 @@
         <Label Text="Zadej prosím svou přezdívku" HorizontalOptions="Center" FontSize="24"/>
         <Entry x:Name="entryPrezdivka" HorizontalOptions="Center" MinimumWidthRequest="150" MaxLength="20"/>
         <Button Text="REGISTROVAT" x:Name="btnRegistrovat" HorizontalOptions="Center" VerticalOptions="Start" HeightRequest="50" FontSize="32" Clicked="btnRegistrovat_Clicked"/>
+        <Button Text="ZPĚT" x:Name="btnZpet" HorizontalOptions="Center" VerticalOptions="Center" Clicked="btnZpet_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>

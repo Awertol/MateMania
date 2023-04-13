@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
 namespace MateMania;
-
 public static class MauiProgram
 {
 	public static MauiApp CreateMauiApp()
@@ -17,6 +16,7 @@ public static class MauiProgram
 
 #if DEBUG
 		builder.Logging.AddDebug();
+
 #endif
 
 		return builder.Build();

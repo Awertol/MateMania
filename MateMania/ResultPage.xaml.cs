@@ -1,3 +1,7 @@
+using MateMania.Models;
+using static System.Net.Mime.MediaTypeNames;
+using System.Xml.Linq;
+
 namespace MateMania;
 
 public partial class ResultPage : ContentPage
@@ -36,6 +40,17 @@ public partial class ResultPage : ContentPage
             {
                 DbData.ZmenitMedaili(1);
             }
+            if(DateTime.Now.Hour >= 22 || DateTime.Now.Hour < 6)
+            {
+                DbData.ZmenitTitul(2);
+            }
         }
 	}
+
+    private async void btnMenu_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PopAsync();
+        Navigation.PopAsync();
+        Navigation.PopAsync();
+    }
 }

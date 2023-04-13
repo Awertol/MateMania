@@ -2,7 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MateMania.ResultPage"
-             Title="ResultPage">
+             Title="">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
     <VerticalStackLayout
         Spacing="25"
         Padding="30,0"
@@ -24,6 +27,6 @@
             <Image x:Name="imgVysledek" MaximumHeightRequest="200" />
             <Label x:Name="lbVysledek" FontSize="36" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,20,0,10"/>
         </StackLayout>
-        <Button x:Name="btnMenu" Text="MENU" FontAttributes="Bold"/>
+        <Button x:Name="btnMenu" Text="MENU" FontAttributes="Bold" Clicked="btnMenu_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>

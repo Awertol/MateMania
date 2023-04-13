@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MateMania.SchoolsPage"
+             Title="">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
+    <VerticalStackLayout VerticalOptions="Fill">
+        <Label 
+            Text="Školy"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <ListView x:Name="lvSeznamSkol" RowHeight="40" MaximumHeightRequest="500"
+                  VerticalOptions="Start" HorizontalOptions="Center" BackgroundColor="{StaticResource Gray100}"/>
+        <Button x:Name="btnVytvoritTridu" Text="VYTVOŘIT" Clicked="btnVytvoritTridu_Clicked"/>
+        <Button x:Name="btnMenu" Text="ZPĚT" Clicked="btnMenu_Clicked"/>
+    </VerticalStackLayout>
+</ContentPage>

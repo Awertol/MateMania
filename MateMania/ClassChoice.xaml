@@ -2,7 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MateMania.ClassChoice"
-             Title="ClassChoice">
+             Title="">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
     <VerticalStackLayout
         Spacing="25"
         Padding="30,0"
@@ -18,8 +21,9 @@
             <Label Text="3. třída" FontSize="28"/>
             <ImageButton x:Name="img3Trida" Source="amogus.png" MaximumWidthRequest="140" Clicked="imgTrida_Clicked" ClassId="3"/>
         </StackLayout>
-        <Button x:Name="btnMenu"
-            Text="MENU"
+        <Button x:Name="btnZpet"
+                Clicked="btnZpet_Clicked"
+            Text="ZPĚT"
             FontSize="28"
             VerticalOptions="End" 
             HorizontalOptions="Center" />

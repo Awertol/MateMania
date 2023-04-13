@@ -2,7 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MateMania.AvatarPage"
-             Title="AvatarPage">
+             Title="">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
     <VerticalStackLayout
         Spacing="15"
         Padding="30,0"
@@ -21,9 +24,8 @@
             </Label.Shadow>
         </Label>
         <Border BackgroundColor="{StaticResource Gray100}">
-            <Image x:Name="imgPostava" MaximumHeightRequest="120" Margin="5" Source="amogus.png"/>
+            <Image x:Name="imgPostava" MaximumHeightRequest="120" Margin="5"/>
         </Border>
-        <Label Text="GALERIE" HorizontalOptions="Center" FontAttributes="Bold" FontSize="28"/>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -38,12 +40,13 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <ImageButton x:Name="imgVolba1" MaximumHeightRequest="60" Grid.Row="0" Grid.Column="0" Source="amogus.png"/>
-            <ImageButton x:Name="imgVolba2" MaximumHeightRequest="60" Grid.Row="1" Grid.Column="0" Source="amogusred.png" IsEnabled="False"/>
-            <ImageButton x:Name="imgVolba3" MaximumHeightRequest="60" Grid.Row="2" Grid.Column="0" Source="amogusred.png" IsEnabled="False"/>
-            <ImageButton x:Name="imgVolba4" MaximumHeightRequest="60" Grid.Row="3" Grid.Column="0" Source="amogusred.png" IsEnabled="False"/>
-            <ImageButton x:Name="imgVolba5" MaximumHeightRequest="60" Grid.Row="4" Grid.Column="0" Source="amogusred.png" IsEnabled="False"/>
-            <ImageButton x:Name="imgVolba6" MaximumHeightRequest="60" Grid.Row="5" Grid.Column="0" Source="amogusred.png" IsEnabled="False"/>
+            <ImageButton x:Name="imgVolba1" MaximumHeightRequest="60" Grid.Row="0" Grid.Column="0" Source="plusak_1.png" ClassId="1" Margin="0,0,0,4"
+                         Clicked="imgVolba_Clicked"/>
+            <ImageButton x:Name="imgVolba2" MaximumHeightRequest="60" Grid.Row="1" Grid.Column="0" Source="plusak_2.png" IsEnabled="False" ClassId="2" Margin="0,4,0,4" Clicked="imgVolba_Clicked"/>
+            <ImageButton x:Name="imgVolba3" MaximumHeightRequest="60" Grid.Row="2" Grid.Column="0" Source="plusak_3.png" IsEnabled="False" ClassId="3" Margin="0,4,0,4" Clicked="imgVolba_Clicked"/>
+            <ImageButton x:Name="imgVolba4" MaximumHeightRequest="60" Grid.Row="3" Grid.Column="0" Source="plusak_4.png" IsEnabled="False" ClassId="4" Margin="0,4,0,4" Clicked="imgVolba_Clicked"/>
+            <ImageButton x:Name="imgVolba5" MaximumHeightRequest="60" Grid.Row="4" Grid.Column="0" Source="plusak_5.png" IsEnabled="False" ClassId="5" Margin="0,4,0,4" Clicked="imgVolba_Clicked"/>
+            <ImageButton x:Name="imgVolba6" MaximumHeightRequest="60" Grid.Row="5" Grid.Column="0" Source="plusak_6.png" IsEnabled="False" ClassId="6" Margin="0,4,0,4" Clicked="imgVolba_Clicked"/>
             <Label Text="LEVEL 1" FontAttributes="Bold" FontSize="28" Grid.Row="0" Grid.Column="1"/>
             <Label Text="LEVEL 2" FontAttributes="Bold" FontSize="28" Grid.Row="1" Grid.Column="1"/>
             <Label Text="LEVEL 3" FontAttributes="Bold" FontSize="28" Grid.Row="2" Grid.Column="1"/>
@@ -57,6 +60,6 @@
             <Label x:Name="lbVolba5Odemknuti" Text="⌛" FontSize="32" Grid.Row="4" Grid.Column="2"/>
             <Label x:Name="lbVolba6Odemknuti" Text="⌛" FontSize="32" Grid.Row="5" Grid.Column="2"/>
         </Grid>
-        <Button x:Name="btnMenu" Text="MENU" FontSize="28" Clicked="btnMenu_Clicked"/>
+        <Button x:Name="btnZpet" Text="ZPĚT" FontSize="28" Clicked="btnZpet_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MateMania.GeneratedTestPage"
+             Title="">
+    <VerticalStackLayout>
+        <Label 
+            Text="Vygenerované příklady"
+            VerticalOptions="Start" 
+            HorizontalOptions="Center" />
+        <Grid x:Name="grdPriklady" RowSpacing="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.45*"/>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition Width="0.45*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button x:Name="btnGenerujZnova" Text="🔃" Clicked="btnGenerujZnova_Clicked" Grid.Row="0" Grid.Column="0"/>
+            <Button x:Name="btnVytvorit" Text="➡️" Clicked="btnVytvorit_Clicked" Grid.Row="0" Grid.Column="1"/>
+            <Button x:Name="btnZpet" Text="ZPĚT" Clicked="btnZpet_Clicked" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

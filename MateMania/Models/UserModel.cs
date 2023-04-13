@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MateMania
+namespace MateMania.Models
 {
     public class UserBase
     {
@@ -14,8 +14,8 @@ namespace MateMania
     public class UserModel : UserBase
     {
         public int Id { get; set; }
-        public string? Firstname { get; set; }
-        public string? Surname { get; set; }
+        public string Firstname { get; set; }
+        public string Surname { get; set; }
         public int? ChosenClassID { get; set; }
         public int IsTeacher { get; set; }
         public int BronzeMedals { get; set; }
@@ -28,6 +28,7 @@ namespace MateMania
         public int Title4 { get; set; }
         public int Title5 { get; set; }
         public int Title6 { get; set; }
+        public int ChosenTitle { get; set; }
     }
     public static class OfflineOnline
     {

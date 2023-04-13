@@ -2,7 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MateMania.ChangeInfoPage"
-             Title="ChangeInfoPage">
+             Title="">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
     <VerticalStackLayout
         Spacing="25"
         Padding="30,0"
@@ -26,7 +29,8 @@
                    FontAttributes="Bold"
                    VerticalOptions="Start"
                    HorizontalOptions="Center"/>
-            <Picker x:Name="pckZakladniSkoly" FontSize="24" VerticalOptions="Start" HorizontalOptions="Center" MinimumWidthRequest="150" MinimumHeightRequest="50"/>
+            <Button x:Name="btnZmenaTridy" Text="ZMĚNA TŘÍDY" FontSize="24" VerticalOptions="Start" HorizontalOptions="Center" MinimumWidthRequest="150" MinimumHeightRequest="50"
+                    Clicked="btnZmenaTridy_Clicked"/>
             <Label Text="JMÉNO"
                    FontSize="24"
                    FontAttributes="Bold"
@@ -47,6 +51,6 @@
             <Entry x:Name="entNoveHeslo" FontSize="24" VerticalOptions="Start" HorizontalOptions="Center" MinimumWidthRequest="150" MinimumHeightRequest="50" Keyboard="Numeric" MaxLength="5"/>
             <Button x:Name="btnZmenit" Text="ZMĚNIT" FontSize="28" VerticalOptions="Start" HorizontalOptions="Center" MinimumWidthRequest="150" MinimumHeightRequest="50" Clicked="btnZmenit_Clicked"/>
         </StackLayout>
-        <Button x:Name="btnMenu" Text="MENU" FontSize="24" VerticalOptions="Start" HorizontalOptions="Center" />
+        <Button x:Name="btnMenu" Text="MENU" FontSize="24" VerticalOptions="Start" HorizontalOptions="Center" Clicked="btnMenu_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>

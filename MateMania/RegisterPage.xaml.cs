@@ -28,4 +28,9 @@ public partial class RegisterPage : ContentPage
 			DisplayAlert("Nìco se nepovedlo", "Zkus to znovu", "OK");
 		}
     }
+
+    private void btnZpet_Clicked(object sender, EventArgs e)
+    {
+		Navigation.PopAsync();
+    }
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MateMania.ExamResultPage"
+             Title="">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
+    <VerticalStackLayout>
+        <Label 
+            Text="Výsledky zadání"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <ListView x:Name="lvVysledkyZaku" MinimumWidthRequest="250" HorizontalOptions="Center" VerticalOptions="FillAndExpand"/>
+        <Button x:Name="btnZpet" Text="ZPĚT" Clicked="btnZpet_Clicked"/>
+    </VerticalStackLayout>
+</ContentPage>

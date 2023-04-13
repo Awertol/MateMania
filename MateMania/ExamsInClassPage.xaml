@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MateMania.ExamsInClassPage"
+             Title="">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
+    <VerticalStackLayout>
+        <Label 
+            Text="TVÁ ZADÁNÍ: "
+            VerticalOptions="Start" 
+            HorizontalOptions="Center" />
+        <ListView x:Name="lvSeznamZadani" ItemSelected="lvSeznamZadani_ItemSelected" HorizontalOptions="Center" MinimumWidthRequest="300" ItemsSource="{Binding SeznamZadani}">
+            
+        </ListView>
+        <Button x:Name="btnZpet" Text="ZPĚT" Clicked="btnZpet_Clicked"/>
+    </VerticalStackLayout>
+</ContentPage>

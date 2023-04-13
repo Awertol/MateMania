@@ -1,3 +1,5 @@
+using MateMania.Models;
+
 namespace MateMania;
 
 public partial class MenuPage : ContentPage
@@ -7,7 +9,7 @@ public partial class MenuPage : ContentPage
 		InitializeComponent();
         if(OfflineOnline.stavPripojeni == false)
         {
-            imgPostava.Source = "amogusred.png";
+            imgPostava.Source = "plusak_1.png";
             imgPostava.Clicked -= imgPostava_Clicked;
             lbUzivPrezdivka.Text = "Offline";
             lbUzivTitul.IsVisible = false;
@@ -19,8 +21,8 @@ public partial class MenuPage : ContentPage
         else
         {
             lbUzivPrezdivka.Text = DbData.nactenyUzivatel.Nickname;
-            lbUzivTitul.Text = "X";
-            imgPostava.Source = "amogus.png";
+            lbUzivTitul.Text = TitlePage.slovnikTitulu.FirstOrDefault(x => x.Value == DbData.nactenyUzivatel.ChosenTitle).Key;
+            imgPostava.Source = $"plusak_{DbData.nactenyUzivatel.Avatar}.png";
             //imgPostava.Source = $"postava{DbData.nactenyUzivatel.Avatar}.png";
         }
 	}

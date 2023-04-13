@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MateMania.CreateClassPage"
+             Title="">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
+    <VerticalStackLayout>
+        <Label 
+            Text="VYTVOŘENÍ TŘÍDY"
+            VerticalOptions="Start" 
+            HorizontalOptions="Center" />
+        <Label Text="KRAJ: " HorizontalOptions="Center" VerticalOptions="Start" Margin="0,20,0,0"/>
+        <Picker x:Name="pckKraj" SelectedIndex="0" WidthRequest="200" SelectedIndexChanged="pckKraj_SelectedIndexChanged"/>
+        <Label Text="OKRES: " HorizontalOptions="Center" VerticalOptions="Start" Margin="0,20,0,0"/>
+        <Picker x:Name="pckOkres" SelectedIndex="0" WidthRequest="200"/>
+        <Label Text="MĚSTO: " HorizontalOptions="Center" VerticalOptions="Start" Margin="0,20,0,0"/>
+        <Entry x:Name="entMesto" WidthRequest="200" Keyboard="Text"/>
+        <Label Text="ŠKOLA: " HorizontalOptions="Center" VerticalOptions="Start" Margin="0,20,0,0"/>
+        <Entry x:Name="entNazevSkoly" WidthRequest="200" Keyboard="Text"/>
+        <Label Text="TŘÍDA: " HorizontalOptions="Center" VerticalOptions="Start" Margin="0,30,0,0"/>
+        <Picker x:Name="pckTrida" HorizontalOptions="Center" VerticalOptions="Start" WidthRequest="200"/>
+        <Button x:Name="btnPridat" Text="PŘIDAT" Clicked="btnPridat_Clicked"/>
+        <Button x:Name="btnZpet" Text="ZPĚT" Clicked="btnZpet_Clicked"/>
+    </VerticalStackLayout>
+</ContentPage>

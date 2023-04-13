@@ -14,4 +14,9 @@ public partial class ClassChoice : ContentPage
 		TestPage test = new TestPage(rocnik);
 		Navigation.PushAsync(test);
     }
+
+    private void btnZpet_Clicked(object sender, EventArgs e)
+    {
+		Navigation.PopAsync();
+    }
 }

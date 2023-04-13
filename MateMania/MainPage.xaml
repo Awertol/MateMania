@@ -11,7 +11,7 @@
             VerticalOptions="Start">
             <Border BackgroundColor="{StaticResource Gray100}" Padding="0,20,0,20">
                 <Image
-                Source="dotnet_bot.png"
+                Source="logo.png"
                 SemanticProperties.Description="Cute dot net bot waving hi to you!"
                 HeightRequest="200"
                 HorizontalOptions="Center" />
@@ -21,7 +21,7 @@
                 FontSize="18"
                 HorizontalOptions="Start" />
             <Entry x:Name="entryUzJmeno" BackgroundColor="{StaticResource Gray100}"
-                   Placeholder="Awertol" FontSize="18" Keyboard="Chat"/>
+                   Placeholder="Awertol" FontSize="18" Keyboard="Text"/>
             <Label
                 Text="Přístupový PIN: "
                 FontSize="18"

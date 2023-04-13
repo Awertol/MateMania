@@ -2,7 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MateMania.MedalsPage"
-             Title="MedalsPage">
+             Title="">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
     <VerticalStackLayout
         Spacing="25"
         Padding="30,0"
@@ -30,6 +33,6 @@
             <Image Source="bronze.png" MaximumHeightRequest="125" HorizontalOptions="End" Grid.Row="2" Grid.Column="0"/>
             <Label x:Name="lbBronze" FontSize="24" HorizontalOptions="Center" Grid.Row="2" Grid.Column="1"/>
         </Grid>
-        <Button Text="⬅️ ZPĚT" x:Name="btnMenu" HorizontalOptions="Center" VerticalOptions="Start" />
+        <Button Text="ZPĚT" x:Name="btnMenu" HorizontalOptions="Center" VerticalOptions="Start" Clicked="btnMenu_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>

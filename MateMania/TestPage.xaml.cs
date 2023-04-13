@@ -1,16 +1,82 @@
-﻿using System;
+﻿using MateMania.Models;
+using System;
 
 namespace MateMania;
 
 public partial class TestPage : ContentPage
 {
-    Dictionary<string, int> slovnikPrikladuVysledku;
+    Dictionary<string, int> slovnikPrikladuVysledku = new();
+    ExamsModel onlineZadani;
+    string onlinePin = "";
+    public TestPage(string pin)
+    {
+        InitializeComponent();
+        OnlinePriklady(pin);
+        onlinePin = pin;
+    }
     public TestPage(int rocnik)
     {
         InitializeComponent();
-        slovnikPrikladuVysledku = GenerujPriklady(rocnik);
+        slovnikPrikladuVysledku = MathProblem.GenerateMany(rocnik);
+        ZaplnGrid();
+    }
+    private async void OnlinePriklady(string pin)
+    {
+        Task<ExamsModel> prikladyTask = DbData.NajitOtazky(pin);
+        var priklady = await prikladyTask;
+        if (priklady == null)
+        {
+            DisplayAlert("Špatný PIN", "Pin nenalezen nebo nepatří do tvé třídy", "OK");
+            Navigation.PopAsync();
+        }
+        else
+        {
+            List<string> docasnySeznam = new();
+            docasnySeznam.Add(priklady.Problem1);
+            if (priklady.Problem2 != null) { docasnySeznam.Add(priklady.Problem2); }
+            if (priklady.Problem3 != null) { docasnySeznam.Add(priklady.Problem3); }
+            if (priklady.Problem4 != null) { docasnySeznam.Add(priklady.Problem4); }
+            if (priklady.Problem5 != null) { docasnySeznam.Add(priklady.Problem5); }
+            if (priklady.Problem6 != null) { docasnySeznam.Add(priklady.Problem6); }
+            if (priklady.Problem7 != null) { docasnySeznam.Add(priklady.Problem7); }
+            if (priklady.Problem8 != null) { docasnySeznam.Add(priklady.Problem8); }
+            byte pocitadlo = 0;
+            foreach (string priklad in docasnySeznam)
+            {
+                if (docasnySeznam[pocitadlo].Contains('+'))
+                {
+                    int indexPlus = priklad.IndexOf('+');
+                    int c1 = Convert.ToInt32(docasnySeznam[pocitadlo].Substring(0, indexPlus));
+                    int c2 = Convert.ToInt32(docasnySeznam[pocitadlo].Substring(indexPlus, docasnySeznam[pocitadlo].Length - indexPlus));
+                    slovnikPrikladuVysledku.Add(priklad, c1 + c2);
+                    pocitadlo++;
+                }
+                else if (docasnySeznam[pocitadlo].Contains('-'))
+                {
+                    int c1 = Convert.ToInt32(docasnySeznam[pocitadlo].Substring(0, priklad.IndexOf('-')));
+                    int c2 = Convert.ToInt32(docasnySeznam[pocitadlo].Substring(priklad.IndexOf('-'), docasnySeznam[pocitadlo].Length));
+                    slovnikPrikladuVysledku.Add(priklad, c1 - c2);
+                }
+                else if (docasnySeznam[pocitadlo].Contains('*'))
+                {
+                    int c1 = Convert.ToInt32(docasnySeznam[pocitadlo].Substring(0, priklad.IndexOf('*')));
+                    int c2 = Convert.ToInt32(docasnySeznam[pocitadlo].Substring(priklad.IndexOf('*'), docasnySeznam[pocitadlo].Length));
+                    slovnikPrikladuVysledku.Add(priklad, c1 * c2);
+                }
+                else if (docasnySeznam[pocitadlo].Contains(':'))
+                {
+                    int c1 = Convert.ToInt32(docasnySeznam[pocitadlo].Substring(0, priklad.IndexOf(':')));
+                    int c2 = Convert.ToInt32(docasnySeznam[pocitadlo].Substring(priklad.IndexOf(':'), docasnySeznam[pocitadlo].Length));
+                    slovnikPrikladuVysledku.Add(priklad, c1 / c2);
+                }
+            }
+            ZaplnGrid();
+            onlineZadani = priklady;
+        }
+    }
+    private void ZaplnGrid()
+    {
         int radek = 0;
-        int pocitadlo = 0;
         foreach (var item in slovnikPrikladuVysledku)
         {
             Label priklad = new Label();
@@ -31,7 +97,7 @@ public partial class TestPage : ContentPage
             vysledek.WidthRequest = 100;
             vysledek.HorizontalOptions = LayoutOptions.CenterAndExpand;
             vysledek.VerticalOptions = LayoutOptions.CenterAndExpand;
-            vysledek.Keyboard=Keyboard.Numeric;
+            vysledek.Keyboard = Keyboard.Numeric;
 
             grdPriklady.Add(priklad);
             grdPriklady.Add(rovnaSe);
@@ -45,175 +111,7 @@ public partial class TestPage : ContentPage
             radek++;
         }
     }
-
-    private Dictionary<string, int> GenerujPriklady(int rocnik)
-    {
-        Dictionary<string, int> slovnikPrikladuVysledku = new Dictionary<string, int>();
-        Random rnd = new Random();
-        if (rocnik == 1)
-        {
-            //vytvoření příkladu, který bude mít násobky 5 - 20
-            int num1 = rnd.Next(6, 20); //19
-            int num2 = rnd.Next(1, 21 - num1);
-
-            int vysledekC1 = num1 + num2;
-            string prikladC1 = num1.ToString() + " + " + num2.ToString();
-            slovnikPrikladuVysledku.Add(prikladC1, vysledekC1);
-
-            int osmyPriklad = rnd.Next(0, 2);
-            int kladny = 0;
-            int zaporny = 0;
-            if (osmyPriklad == 0)
-            {
-                kladny += 1;
-            }
-            else
-            {
-                zaporny += 1;
-            }
-
-            for (int i = 0; i < 3 + kladny; i++)
-            {
-                int result = 0;
-                do
-                {
-                    num1 = rnd.Next(1, 11);
-                    num2 = rnd.Next(1, 11);
-                    result = num1 + num2;
-                } while (result > 20 || slovnikPrikladuVysledku.Contains(new KeyValuePair<string, int>($"{num1} + {num2}", result)));
-
-                slovnikPrikladuVysledku.Add($"{num1} + {num2}", result);
-            }
-            for (int i = 0; i < 3 + zaporny; i++)
-            {
-                int result = 0;
-                do
-                {
-                    num1 = rnd.Next(1, 21);
-                    num2 = rnd.Next(1, num1);
-                    result = num1 - num2;
-                } while (result > 20 || slovnikPrikladuVysledku.Contains(new KeyValuePair<string, int>($"{num1} - {num2}", result)));
-
-                slovnikPrikladuVysledku.Add($"{num1} - {num2}", result);
-            }
-        }
-        else if (rocnik == 2)
-        {
-            int pocetKladnych = rnd.Next(1, 3);
-            int pocetOdectu = 4 - pocetKladnych;
-            for (int i = 1; i <= pocetKladnych; i++)
-            {
-                int cislo1 = rnd.Next(1, 50);
-                int cislo2 = rnd.Next(1, 50 - cislo1);
-                int vysledek = cislo1 + cislo2;
-                slovnikPrikladuVysledku.Add($"{cislo1} + {cislo2}", vysledek);
-            }
-            for (int i = 1; i <= pocetOdectu; i++)
-            {
-                int cislo1 = rnd.Next(1, 50);
-                int cislo2 = rnd.Next(1, cislo1);
-                int vysledek = cislo1 - cislo2;
-                slovnikPrikladuVysledku.Add($"{cislo1} - {cislo2}", vysledek);
-            }
-            for (int i = 1; i <= 2; i++)
-            {
-                int cislo1 = rnd.Next(2, 6);
-                int cislo2 = rnd.Next(2, (cislo1 * 4) + 1);
-                int vysledek = cislo1 * cislo2;
-                slovnikPrikladuVysledku.Add($"{cislo1} * {cislo2}", vysledek);
-            }
-            for (int i = 1; i <= 2; i++)
-            {
-                int vysledek = 0;
-                int cislo1;
-                int cislo2 = rnd.Next(2, 6);
-                do
-                {
-                    cislo1 = rnd.Next(2, 51);
-                    vysledek = cislo1 / cislo2;
-                } while (cislo1 % cislo2 != 0 || vysledek > 50);
-                slovnikPrikladuVysledku.Add($"{cislo1} : {cislo2}", vysledek);
-            }
-        }
-        else if (rocnik == 3)
-        {
-            int cisloNasobky5a10 = rnd.Next(1, 20) * 5;
-            int cislo2 = rnd.Next(1, 10);
-            slovnikPrikladuVysledku.Add($"{cisloNasobky5a10} * {cislo2}", cisloNasobky5a10 * cislo2);
-
-            int kladne = 0;
-            int odecet = 0;
-            int nasobeni = 0;
-            int deleni = 0;
-
-            int zvyseni = rnd.Next(0, 4);
-            if (zvyseni == 0) { kladne = 2; }
-            else if (zvyseni == 1) { odecet = 2; }
-            else if (zvyseni == 2) { nasobeni = 2; }
-            else if (zvyseni == 3) { deleni = 2; }
-
-            for (int i = 0; i < 2 + nasobeni; i++)
-            {
-                int cislo = 0;
-                while(true)
-                {
-                    cislo = rnd.Next(2, 20);
-                    if(!slovnikPrikladuVysledku.ContainsKey($"{cislo} * {cislo}"))
-                    {
-                        break;
-                    }
-                }
-                slovnikPrikladuVysledku.Add($"{cislo} * {cislo}", cislo * cislo);      
-            }
-
-            int delitel = rnd.Next(1, 21); // dělitel v rozmezí 1-20
-            int delenec = rnd.Next(1, delitel*25); // dělenec v rozmezí 1-25, musí být maximálně 25násobkem dělitele
-            int mezivypocet = delitel * delenec; // výpočet dělení
-            while (mezivypocet > 1000 || (delenec % delitel) != 0) // opakování, dokud nevyhovuje pravidlům
-            {
-                delitel = rnd.Next(1, 21);
-                delenec = rnd.Next(1, 26);
-                mezivypocet = delitel * delenec;
-            }
-            slovnikPrikladuVysledku.Add($"{delenec} : {delitel}", delenec / delitel);
-
-            for (int i = 0; i < 0 + deleni; i++)
-            {
-                int cisloA, cisloB;
-                do
-                {
-                    cisloB = rnd.Next(2, 11);
-                    cisloA = rnd.Next(2, cisloB * 10 + 1);
-                }
-                while (cisloB % cisloA != 0);
-                slovnikPrikladuVysledku.Add($"{cisloA} : {cisloB}", cisloB / cisloA);
-            }
-            for(int i = 0; i < 1 + kladne; i++)
-            {
-                int cislo1 = rnd.Next(1, 95) * 10; 
-                int rozdilRnd = rnd.Next(0, 1000 - cislo1); 
-                int vysledek = cislo1 + rozdilRnd;
-                slovnikPrikladuVysledku.Add($"{cislo1} + {rozdilRnd}", vysledek);
-            }
-            for (int i = 0; i < 1 + odecet; i++)
-            {
-                int cislo1 = rnd.Next(50, 101) * 10;
-                int nasobky5X10 = rnd.Next(0, 2);
-                int cisloB = 0;
-                if(nasobky5X10 == 0)
-                {
-                    cisloB = rnd.Next(1,11) * 5;
-                }
-                else
-                {
-                    cisloB = rnd.Next(1,11) * 10;
-                }
-                int vysledek = cislo1 - cisloB;
-                slovnikPrikladuVysledku.Add($"{cislo1} - {cisloB}", vysledek);
-            }
-        }
-        return slovnikPrikladuVysledku;
-    }
+    
     bool zkontrolovano = false;
     int pocetSpravnych = 0;
 
@@ -256,8 +154,22 @@ public partial class TestPage : ContentPage
         }
         else
         {
-            ResultPage strankaVysledek = new ResultPage(pocetSpravnych);
-            Navigation.PushAsync(strankaVysledek);
+            if (onlineZadani == null)
+            {
+                ResultPage strankaVysledek = new ResultPage(pocetSpravnych);
+                Navigation.PushAsync(strankaVysledek);
+            }
+            else
+            {
+                ExamAnswersModel vysledekZadani = new();
+                vysledekZadani.MaxPossible = slovnikPrikladuVysledku.Count;
+                vysledekZadani.UserID = DbData.nactenyUzivatel.Id;
+                vysledekZadani.Result = pocetSpravnych;
+                vysledekZadani.ExamID = onlineZadani.Id;
+                DbData.PridatVysledek(vysledekZadani);
+                DisplayAlert("Výsledek zapsán", $"Tvůj výsledek byl {vysledekZadani.MaxPossible}/{vysledekZadani.Result}", "OK");
+                Navigation.PopAsync();
+            }
         }
         zkontrolovano = true;
     }

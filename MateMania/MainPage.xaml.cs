@@ -1,4 +1,6 @@
-﻿namespace MateMania;
+﻿using MateMania.Models;
+
+namespace MateMania;
 
 public partial class MainPage : ContentPage
 {
@@ -25,6 +27,7 @@ public partial class MainPage : ContentPage
 
     private async void btnLogin_Clicked(object sender, EventArgs e)
     {
+		OfflineOnline.stavPripojeni = true;
 		Task<UserModel> uzivatel = DbData.LoginUzivatele(entryUzJmeno.Text, entryUzHeslo.Text);
 		UserModel uz = await uzivatel;
 		if (uz != null)
@@ -45,7 +48,8 @@ public partial class MainPage : ContentPage
     }
     private void btnOffline_Clicked(object sender, EventArgs e)
     {
-		MenuPage menuStranka = new MenuPage();
+        OfflineOnline.stavPripojeni = false;
+        MenuPage menuStranka = new MenuPage();
 		Navigation.PushAsync(menuStranka);
     }
 }

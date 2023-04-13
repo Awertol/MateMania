@@ -2,13 +2,16 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MateMania.ProfilePage"
-             Title="ProfilePage">
+             Title="">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
     <VerticalStackLayout 
         Padding="30,0"
         Margin="0,60,0,0"
         VerticalOptions="Start">
         <Border BackgroundColor="{StaticResource Gray100}">
-            <ImageButton x:Name="imgPostavaProfil" MaximumHeightRequest="200" Source="amogus.png" Clicked="imgPostavaProfil_Clicked"/>
+            <ImageButton x:Name="imgPostavaProfil" MaximumHeightRequest="200" Clicked="imgPostavaProfil_Clicked"/>
         </Border>
         <Label
             x:Name="lbUzivPrezdivka"
@@ -41,9 +44,10 @@
             </Grid.RowDefinitions>
             <Label Text="Jsi učitel?" FontSize="20" Grid.Column="0" Grid.Row="0"/>
             <CheckBox x:Name="chbUcitel" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" CheckedChanged="chbUcitel_CheckedChanged"/>
-            <Button x:Name="btnRezimUcitele" Grid.Column="2" Grid.Row="0" Text="REŽIM UČITELE" IsVisible="False"/>
+            <Button x:Name="btnRezimUcitele" Grid.Column="2" Grid.Row="0" Text="REŽIM UČITELE" IsVisible="False"
+                    Clicked="btnRezimUcitele_Clicked"/>
         </Grid>
         <Button x:Name="btnOdhlasit" Text="ODHLÁSIT" FontAttributes="Bold" FontSize="28" VerticalOptions="Start" HorizontalOptions="Center"/>
-        <Button x:Name="btnMenu" Text="MENU" FontAttributes="Bold" FontSize="28" VerticalOptions="Start" HorizontalOptions="Center"/>
+        <Button x:Name="btnMenu" Text="MENU" FontAttributes="Bold" FontSize="28" VerticalOptions="Start" HorizontalOptions="Center" Clicked="btnMenu_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>

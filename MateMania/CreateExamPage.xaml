@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MateMania.CreateExamPage"
+             Title="">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
+    <VerticalStackLayout
+        Spacing="20"
+        Padding="10"
+        Margin="0,60,0,0"
+        VerticalOptions="Start">
+        <Label 
+            Text="Vytvoření příkladů"
+            Margin="0,0,0,20"
+            FontSize="36"
+            VerticalOptions="Start" 
+            HorizontalOptions="Center" />
+        <Grid x:Name="grdTvorenePriklady" HorizontalOptions="Center" VerticalOptions="FillAndExpand" BackgroundColor="Cyan">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.40*"/>
+                <ColumnDefinition Width="0.20*"/>
+                <ColumnDefinition Width="0.40*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+        </Grid>
+        <Button x:Name="btnPridatJmenoZadani" Text="PŘIDAT NÁZEV" Clicked="btnPridatJmenoZadani_Clicked"/>
+        <Button x:Name="btnHotovo" Text="HOTOVO" Clicked="btnHotovo_Clicked" VerticalOptions="End"/>
+    </VerticalStackLayout>
+</ContentPage>

@@ -2,9 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MateMania.TestPage"
-             Title="TestPage">
+             Title="">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
     <VerticalStackLayout
-        Spacing="25"
+        Spacing="15"
         Padding="30,0"
         Margin="0,60,0,0"
         VerticalOptions="Start">
@@ -20,7 +23,7 @@
             </Label.Shadow>
         </Label>
         
-        <Grid x:Name="grdPriklady" >
+        <Grid x:Name="grdPriklady" RowSpacing="20">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.65*"/>
                 <ColumnDefinition Width="0.1*"/>
@@ -37,6 +40,6 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
         </Grid>
-        <Button x:Name="btnHotovo" Text="HOTOVO" Clicked="btnHotovo_Clicked"/>
+        <Button x:Name="btnHotovo" Text="HOTOVO" VerticalOptions="Start" FontSize="36" Clicked="btnHotovo_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>
