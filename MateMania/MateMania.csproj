@@ -67,6 +67,9 @@
 	  <None Remove="Resources\Images\plusak_5.png" />
 	  <None Remove="Resources\Images\plusak_6.png" />
 	  <None Remove="Resources\Images\silver.png" />
+	  <None Remove="Resources\Images\trida1.png" />
+	  <None Remove="Resources\Images\trida2.png" />
+	  <None Remove="Resources\Images\trida3.png" />
 	</ItemGroup>
 
 	<ItemGroup>

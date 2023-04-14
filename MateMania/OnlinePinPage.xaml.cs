@@ -1,7 +1,10 @@
+﻿using System.Text;
+
 namespace MateMania;
 
 public partial class OnlinePinPage : ContentPage
 {
+	readonly string[] pins = { "\0x1F340", "\0x1F427", "\0x1F335", "\0x2764", "\0x1F49A", "\01F499", "\0x2600", "\0x2694", "\0x1F319" };
 	public OnlinePinPage()
 	{
 		InitializeComponent();
@@ -11,12 +14,13 @@ public partial class OnlinePinPage : ContentPage
 	private void NastavImgBtn(string tagPressed)
 	{
         volenyPin += tagPressed;
-        ImageButton vkladanyPinButton = new();
+        Button vkladanyPinButton = new();
 		vkladanyPinButton.MaximumHeightRequest = 40;
 		vkladanyPinButton.MaximumWidthRequest = 40;
         vkladanyPinButton.Clicked += VkladanyPinButton_Clicked;
-
-        vkladanyPinButton.Source = $"pin{tagPressed}.png";
+		vkladanyPinButton.BackgroundColor = Colors.Black;
+		vkladanyPinButton.FontSize = 16;
+		vkladanyPinButton.Text += pins[Convert.ToInt32(tagPressed) - 1];
 		vkladanyPinButton.ClassId = tagPressed;
 		grdPin.Add(vkladanyPinButton);
 		Grid.SetColumn(vkladanyPinButton, pocetZmacknuti);
@@ -31,7 +35,7 @@ public partial class OnlinePinPage : ContentPage
 
     private void VkladanyPinButton_Clicked(object sender, EventArgs e)
     {
-		var zmacknutyPinSmazani = sender as ImageButton;
+		var zmacknutyPinSmazani = sender as Button;
 		
 		pocetZmacknuti--;
 		grdPin.Remove(zmacknutyPinSmazani);
@@ -39,10 +43,10 @@ public partial class OnlinePinPage : ContentPage
 		volenyPin = "";
 		foreach(var prvekGridu in grdPin.Children)
 		{
-			if (prvekGridu is ImageButton)
+			if (prvekGridu is Button)
 			{
 				grdPin.SetColumn(prvekGridu, poc);
-				ImageButton prvekGriduImgBtn = (ImageButton)prvekGridu;
+				Button prvekGriduImgBtn = (Button)prvekGridu;
 				volenyPin += prvekGriduImgBtn.ClassId;
 				poc++;
 			}
@@ -51,7 +55,7 @@ public partial class OnlinePinPage : ContentPage
 
     private void btnVolba_Clicked(object sender, EventArgs e)
     {
-		var zmacknutaVolba = sender as ImageButton;
+		var zmacknutaVolba = sender as Button;
 		string tagZmacknuty = zmacknutaVolba.ClassId;
 		NastavImgBtn(tagZmacknuty);
     }

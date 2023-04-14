@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MateMania.ProfilePage"
-             Title="">
+             BackgroundColor="{StaticResource Secondary}">
     <Shell.BackButtonBehavior>
         <BackButtonBehavior IsVisible="False" IsEnabled="False" />
     </Shell.BackButtonBehavior>
@@ -33,21 +33,21 @@
         <Label Text="Tvá ZŠ: " FontSize="20"/>
         <Label x:Name="lbUzivZS" FontSize="24"/>
         <Button x:Name="btnZmenaUdaju" Text="ZMĚNA ÚDAJŮ" FontSize="28" Clicked="btnZmenaUdaju_Clicked"/>
-        <Grid>
+        <Grid Margin="0,10,0,10">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label Text="Jsi učitel?" FontSize="20" Grid.Column="0" Grid.Row="0"/>
-            <CheckBox x:Name="chbUcitel" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" CheckedChanged="chbUcitel_CheckedChanged"/>
-            <Button x:Name="btnRezimUcitele" Grid.Column="2" Grid.Row="0" Text="REŽIM UČITELE" IsVisible="False"
+            <Label Text="Jsi učitel?" FontSize="20" Grid.Column="0" Grid.Row="0" VerticalOptions="Center"/>
+            <CheckBox x:Name="chbUcitel" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" CheckedChanged="chbUcitel_CheckedChanged" Margin="10,0,10,0"/>
+            <Button x:Name="btnRezimUcitele" Grid.Column="2" Grid.Row="0" Text="REŽIM UČITELE" IsVisible="False" BackgroundColor="{StaticResource Tertiary}"
                     Clicked="btnRezimUcitele_Clicked"/>
         </Grid>
-        <Button x:Name="btnOdhlasit" Text="ODHLÁSIT" FontAttributes="Bold" FontSize="28" VerticalOptions="Start" HorizontalOptions="Center"/>
-        <Button x:Name="btnMenu" Text="MENU" FontAttributes="Bold" FontSize="28" VerticalOptions="Start" HorizontalOptions="Center" Clicked="btnMenu_Clicked"/>
+        <Button x:Name="btnOdhlasit" Text="ODHLÁSIT" BackgroundColor="DarkCyan" FontAttributes="Bold" FontSize="28" VerticalOptions="Start" HorizontalOptions="Center" MinimumWidthRequest="200"/>
+        <Button x:Name="btnMenu" Text="MENU" FontAttributes="Bold" FontSize="28" VerticalOptions="Start" HorizontalOptions="Center" Clicked="btnMenu_Clicked" MinimumWidthRequest="200"/>
     </VerticalStackLayout>
 </ContentPage>

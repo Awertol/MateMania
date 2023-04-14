@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MateMania.MenuPage"
              NavigationPage.HasBackButton="False"
+             BackgroundColor="{StaticResource Secondary}"
              >
     <Shell.BackButtonBehavior>
         <BackButtonBehavior IsVisible="False" IsEnabled="False" />
@@ -10,30 +11,29 @@
     <VerticalStackLayout
         Spacing="25"
         Padding="30,0"
-        Margin="0,60,0,0"
+        Margin="0,20,0,0"
         VerticalOptions="Start">
         <Border BackgroundColor="{StaticResource Gray100}">
-            <ImageButton x:Name="imgPostava" MaximumHeightRequest="200" Source="amogus.png" Clicked="imgPostava_Clicked"/>
+            <ImageButton x:Name="imgPostava" MaximumHeightRequest="200" Clicked="imgPostava_Clicked"/>
         </Border>
         <Label
             x:Name="lbUzivPrezdivka"
             Text="Awertol"
             Margin="0,10,0,10"
-            FontSize="18"
+            FontSize="19"
             VerticalOptions="Start" 
             HorizontalOptions="Center" />
         <Label
             x:Name="lbUzivTitul"
-            Text="Zlatý mistr"
             Margin="0,10,0,10"
-            FontSize="15"
+            FontSize="17"
             TextColor="Gold"
             VerticalOptions="Start" 
             HorizontalOptions="Center" />
         <ProgressBar x:Name="pbUzivExp" ProgressColor="{StaticResource Primary}" Progress="0.58" MinimumHeightRequest="15"/>
-        <Button x:Name="btnProcvicovani" FontAttributes="Bold" FontSize="24" Text="PROCVIČOVÁNÍ" BackgroundColor="DarkCyan" Clicked="btnProcvicovani_Clicked"/>
-        <Button x:Name="btnOnline" FontAttributes="Bold" FontSize="24" Text="ONLINE" BackgroundColor="DarkCyan" Clicked="btnOnline_Clicked"/>
-        <Button x:Name="btnVysledky" FontAttributes="Bold" FontSize="24" Text="Medaile" BackgroundColor="DarkCyan" Clicked="btnVysledky_Clicked"/>
-        <Button x:Name="btnTituly" FontAttributes="Bold" FontSize="24" Text="Tituly" BackgroundColor="DarkCyan" Clicked="btnTituly_Clicked"/>
+        <Button x:Name="btnProcvicovani" FontAttributes="Bold" FontSize="24" Text="PROCVIČOVÁNÍ" BackgroundColor="{StaticResource Primary}" TextColor="Black" Clicked="btnProcvicovani_Clicked"/>
+        <Button x:Name="btnOnline" FontAttributes="Bold" FontSize="24" Text="ONLINE" BackgroundColor="{StaticResource Primary}" TextColor="Black"  Clicked="btnOnline_Clicked"/>
+        <Button x:Name="btnVysledky" FontAttributes="Bold" FontSize="24" Text="MEDAILE" BackgroundColor="{StaticResource Primary}" TextColor="Black"  Clicked="btnVysledky_Clicked"/>
+        <Button x:Name="btnTituly" FontAttributes="Bold" FontSize="24" Text="TITULY" BackgroundColor="{StaticResource Primary}" TextColor="Black"  Clicked="btnTituly_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>

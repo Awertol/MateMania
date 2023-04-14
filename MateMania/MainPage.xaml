@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MateMania.MainPage">
+             x:Class="MateMania.MainPage"
+             BackgroundColor="{StaticResource Secondary}">
 
     <ScrollView>
         <VerticalStackLayout
@@ -9,39 +10,43 @@
             Padding="30,0"
             Margin="0,60,0,0"
             VerticalOptions="Start">
-            <Border BackgroundColor="{StaticResource Gray100}" Padding="0,20,0,20">
+            <Border BackgroundColor="{StaticResource Gray900}" Padding="0,20,0,20">
                 <Image
                 Source="logo.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
                 HeightRequest="200"
                 HorizontalOptions="Center" />
             </Border>
             <Label
                 Text="Uživatelské jméno: "
-                FontSize="18"
+                FontSize="20"
+                FontAttributes="Bold"
                 HorizontalOptions="Start" />
             <Entry x:Name="entryUzJmeno" BackgroundColor="{StaticResource Gray100}"
                    Placeholder="Awertol" FontSize="18" Keyboard="Text"/>
             <Label
                 Text="Přístupový PIN: "
-                FontSize="18"
+                FontSize="20"
+                FontAttributes="Bold"
                 HorizontalOptions="Start" />
             <Entry x:Name="entryUzHeslo" BackgroundColor="{StaticResource Gray100}"
-                   Placeholder="5416" FontSize="18" Keyboard="Numeric"/>
+                   Placeholder="54162" FontSize="18" Keyboard="Numeric"/>
             <Button
                 x:Name="btnLogin"
                 Text="PŘIHLÁSIT"
                 Clicked="btnLogin_Clicked"
+                MinimumWidthRequest="200"
                 HorizontalOptions="Center" />
             <Button
                 x:Name="btnRegistrovat"
                 Text="REGISTROVAT"
                 Clicked="btnRegistrovat_Clicked"
+                MinimumWidthRequest="200"
                 HorizontalOptions="Center" />
             <Button
                 x:Name="btnOffline"
                 Text="OFFLINE"
                 Clicked="btnOffline_Clicked"
+                MinimumWidthRequest="200"
                 BackgroundColor="{StaticResource Tertiary}"
                 HorizontalOptions="Center" />
 
