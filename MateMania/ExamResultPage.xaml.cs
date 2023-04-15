@@ -4,7 +4,6 @@ namespace MateMania;
 
 public partial class ExamResultPage : ContentPage
 {
-	string[] poleJmenVysledku;
 	public ExamResultPage(List<ExamAnswersModel> nacteneVysledky)
 	{
 		InitializeComponent();
@@ -22,11 +21,17 @@ public partial class ExamResultPage : ContentPage
                 var uzivatelVysledku = lideTridy.FirstOrDefault(x => x.Id == vysledek.UserID);
                 if (uzivatelVysledku != null)
                 {
-                    string radek = uzivatelVysledku.Firstname + " " + uzivatelVysledku.Surname + " | (" + vysledek.MaxPossible + " / " + vysledek.Result + ")";
+                    string radek = uzivatelVysledku.Firstname + " " + uzivatelVysledku.Surname + " | (" + vysledek.Result + " / " + vysledek.MaxPossible + ")";
                     vysledkyZaku.Add(radek);
                 }
             }
             lvVysledkyZaku.ItemsSource = vysledkyZaku;
+        }
+        if(vysledkyZaku.Count == 0)
+        {
+            lbVysledky.Text = "\U000026D4";
+            frame.IsVisible = false;
+            lvVysledkyZaku.IsVisible = false;
         }
     }
 

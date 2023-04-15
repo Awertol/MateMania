@@ -13,49 +13,25 @@ namespace MateMania
             get
             {
                 int experience = 0;
-                int gMedals = DbData.nactenyUzivatel.GoldMedals;
-                int sMedals = DbData.nactenyUzivatel.SilverMedals;
-                int bMedals = DbData.nactenyUzivatel.BronzeMedals;
-                experience += gMedals * 200;
-                experience += sMedals * 120;
-                experience += bMedals * 40;
+                experience += DbData.nactenyUzivatel.GoldMedals * 200;
+                experience += DbData.nactenyUzivatel.SilverMedals * 120;
+                experience += DbData.nactenyUzivatel.BronzeMedals * 40;
                 return experience;
             }
         }
+        public static int[] LevelCaps = { 2000, 4500, 7000, 10000, 15000 };
         public static int Level
         {
             get
             {
-                if (Experience >= 0 && Experience <= 2000)
-                {
-                    return 1;
-                }
-                else if (Experience > 2000 && Experience <= 4500)
-                {
-                    return 2;
-                }
-                else if (Experience > 4500 && Experience <= 7000)
-                {
-                    return 3;
-                }
-                else if (Experience > 7000 && Experience <= 10000)
-                {
-                    return 4;
-                }
-                else if (Experience > 10000 && Experience <= 15000)
-                {
-                    return 5;
-                }
-                else if (Experience > 15000)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
+                if (Experience >= 0 && Experience <= LevelCaps[0]) { return 1; }
+                else if (Experience > LevelCaps[0] && Experience <= LevelCaps[1]) { return 2; }
+                else if (Experience > LevelCaps[1] && Experience <= LevelCaps[2]) { return 3; }
+                else if (Experience > LevelCaps[2] && Experience <= LevelCaps[3]) { return 4; }
+                else if (Experience > LevelCaps[3] && Experience <= LevelCaps[4]) { return 5; }
+                else if (Experience > LevelCaps[4]) { return 6; }
+                else { return 0; }
             }
         }
-        public static int[] LevelCaps = { 2000, 4500, 7000, 10000, 15000 };
     }
 }

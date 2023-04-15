@@ -87,6 +87,7 @@ public partial class TestPage : ContentPage
 
             Label rovnaSe = new Label();
             rovnaSe.Text = "=";
+            rovnaSe.Margin = new Thickness(0, 0, 5, 0);
             rovnaSe.FontSize = 36;
             rovnaSe.HorizontalOptions = LayoutOptions.CenterAndExpand;
             rovnaSe.VerticalOptions = LayoutOptions.CenterAndExpand;
@@ -95,6 +96,7 @@ public partial class TestPage : ContentPage
             vysledek.Placeholder = "0";
             vysledek.FontSize = 32;
             vysledek.WidthRequest = 100;
+            vysledek.TextColor = Colors.White;
             vysledek.HorizontalOptions = LayoutOptions.CenterAndExpand;
             vysledek.VerticalOptions = LayoutOptions.CenterAndExpand;
             vysledek.Keyboard = Keyboard.Numeric;

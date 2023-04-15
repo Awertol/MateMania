@@ -17,8 +17,8 @@
         <Picker x:Name="pckTituly"
                 Margin="0,10,0,10"
                 VerticalOptions="Start"
-                BackgroundColor="{StaticResource Gray900}"
-                TextColor="White"
+                BackgroundColor="{StaticResource Gray100}"
+                TextColor="{StaticResource Gray900}"
                 FontSize="20"
                 HorizontalOptions="CenterAndExpand" MinimumWidthRequest="400" SelectedIndexChanged="pckTituly_SelectedIndexChanged">
             <Picker.Shadow>

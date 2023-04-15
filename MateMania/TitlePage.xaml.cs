@@ -77,5 +77,6 @@ public partial class TitlePage : ContentPage
     {
         int cisloTitulu = slovnikTitulu[pckTituly.SelectedItem as string];
         DbData.NastavitTitul(cisloTitulu);
+        DbData.RefreshUzivatele();
     }
 }

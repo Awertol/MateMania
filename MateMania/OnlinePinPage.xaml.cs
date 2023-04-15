@@ -4,7 +4,17 @@ namespace MateMania;
 
 public partial class OnlinePinPage : ContentPage
 {
-	readonly string[] pins = { "\0x1F340", "\0x1F427", "\0x1F335", "\0x2764", "\0x1F49A", "\01F499", "\0x2600", "\0x2694", "\0x1F319" };
+	public static readonly string[] pins = 
+		{ "\U0001F340", 
+		"\U0001F49A", 
+		"\U0001F335", 
+		"\U00002764", 
+		"\U0001F427", 
+		"\U0001F499", 
+		"\U00002600", 
+		"\U0001F947", 
+		"\U0001F319" };
+    
 	public OnlinePinPage()
 	{
 		InitializeComponent();
@@ -15,11 +25,12 @@ public partial class OnlinePinPage : ContentPage
 	{
         volenyPin += tagPressed;
         Button vkladanyPinButton = new();
-		vkladanyPinButton.MaximumHeightRequest = 40;
-		vkladanyPinButton.MaximumWidthRequest = 40;
+		vkladanyPinButton.MaximumHeightRequest = 50;
+		vkladanyPinButton.MaximumWidthRequest = 30;
         vkladanyPinButton.Clicked += VkladanyPinButton_Clicked;
-		vkladanyPinButton.BackgroundColor = Colors.Black;
-		vkladanyPinButton.FontSize = 16;
+		vkladanyPinButton.BackgroundColor = Colors.White;
+		vkladanyPinButton.FontSize = 24;
+		vkladanyPinButton.Scale = 0.8;
 		vkladanyPinButton.Text += pins[Convert.ToInt32(tagPressed) - 1];
 		vkladanyPinButton.ClassId = tagPressed;
 		grdPin.Add(vkladanyPinButton);

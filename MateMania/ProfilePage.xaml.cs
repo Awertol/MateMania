@@ -99,4 +99,13 @@ public partial class ProfilePage : ContentPage
     {
         Navigation.PopAsync();
     }
+
+    private void btnOdhlasit_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PopAsync();
+        Navigation.PopAsync();
+        DbData.nactenyUzivatel = null;
+        OfflineOnline.stavPripojeni = false;
+    }
+    
 }

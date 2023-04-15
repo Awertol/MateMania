@@ -15,7 +15,7 @@ public partial class CreateExamPage : ContentPage
         for (int i = 0; i < pocetRadku; i++)
         {
             Entry zadavane1 = new Entry();
-            zadavane1.FontSize = 36;
+            zadavane1.FontSize = 34;
             zadavane1.WidthRequest = 110;
             zadavane1.HorizontalOptions = LayoutOptions.CenterAndExpand;
             zadavane1.VerticalOptions = LayoutOptions.Start;
@@ -25,11 +25,12 @@ public partial class CreateExamPage : ContentPage
             Picker znamenko = new Picker();
             znamenko.FontSize = 36;
             znamenko.ItemsSource = operace;
+            znamenko.SelectedIndex = 0;
             znamenko.HorizontalOptions = LayoutOptions.CenterAndExpand;
             znamenko.VerticalOptions = LayoutOptions.Start;
 
             Entry zadavane2 = new Entry();
-            zadavane2.FontSize = 36;
+            zadavane2.FontSize = 34;
             zadavane2.WidthRequest = 110;
             zadavane2.ClassId = "2";
             zadavane2.HorizontalOptions = LayoutOptions.CenterAndExpand;
@@ -112,7 +113,12 @@ public partial class CreateExamPage : ContentPage
                     goto case 7;
             }
             DbData.VytvoritZadani(vytvorenePriklady);
-            DisplayAlert("Vytvoøeno nové zadání", $"PIN: {vytvorenePriklady.PIN}\nZadání jsou po 14 dnech mazána", "OK");
+            string pin = "";
+            for (int i = 0; i < vygPin.Length; i++)
+            {
+                pin += OnlinePinPage.pins[Convert.ToInt32(vygPin[i].ToString())-1];
+            }
+            DisplayAlert("Vytvoøeno nové zadání", $"PIN: {pin}\nZadání jsou po 14 dnech mazána", "OK");
             Navigation.PopAsync();
         }
     }

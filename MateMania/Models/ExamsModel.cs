@@ -13,7 +13,7 @@ namespace MateMania.Models
         public int TeacherID { get; set; }
         public string? ExamName { get; set; }
         public string PIN { get; set; }
-        public DateTime Creation { get; set; }
+        public DateTime? Creation { get; set; }
         public string Problem1 { get; set; }
         public string? Problem2 { get; set; }
         public string? Problem3 { get; set; }

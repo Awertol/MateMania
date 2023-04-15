@@ -44,5 +44,6 @@ public partial class AvatarPage : ContentPage
         int idAvatarTlacitka = Convert.ToInt32(imgVolba.ClassId);
         imgPostava.Source = $"plusak_{idAvatarTlacitka}.png";
         DbData.ZmenitUdaj("Avatar", imgVolba.ClassId);
+        DbData.nactenyUzivatel.Avatar = idAvatarTlacitka;
     }
 }

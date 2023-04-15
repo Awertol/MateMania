@@ -23,34 +23,34 @@
                    FontAttributes="Bold"
                    VerticalOptions="Start"
                    HorizontalOptions="Center"/>
-            <Entry x:Name="entPrezdivka" FontSize="24" VerticalOptions="Start" HorizontalOptions="Center" MinimumWidthRequest="150" MinimumHeightRequest="50"/>
+            <Entry x:Name="entPrezdivka" FontSize="24" VerticalOptions="Start" BackgroundColor="{StaticResource Gray100}" HorizontalOptions="Center" MinimumWidthRequest="150" MinimumHeightRequest="50"/>
             <Label Text="ZÁKLADNÍ ŠKOLA"
                    FontSize="24"
                    FontAttributes="Bold"
                    VerticalOptions="Start"
                    HorizontalOptions="Center"/>
-            <Button x:Name="btnZmenaTridy" Text="ZMĚNA TŘÍDY" FontSize="24" VerticalOptions="Start" HorizontalOptions="Center" MinimumWidthRequest="150" MinimumHeightRequest="50"
+            <Button x:Name="btnZmenaTridy" Text="ZMĚNA TŘÍDY" FontSize="24" VerticalOptions="Start" BackgroundColor="{StaticResource Tertiary}" HorizontalOptions="Center" MinimumWidthRequest="150" MinimumHeightRequest="50"
                     Clicked="btnZmenaTridy_Clicked"/>
             <Label Text="JMÉNO"
                    FontSize="24"
                    FontAttributes="Bold"
                    VerticalOptions="Start"
                    HorizontalOptions="Center"/>
-            <Entry x:Name="entJmeno" FontSize="24" VerticalOptions="Start" HorizontalOptions="Center" MinimumWidthRequest="150" MinimumHeightRequest="50"/>
+            <Entry x:Name="entJmeno" FontSize="24" VerticalOptions="Start" BackgroundColor="{StaticResource Gray100}" HorizontalOptions="Center" MinimumWidthRequest="150" MinimumHeightRequest="50"/>
             <Label Text="PŘÍJMENÍ"
                    FontSize="24"
                    FontAttributes="Bold"
                    VerticalOptions="Start"
                    HorizontalOptions="Center"/>
-            <Entry x:Name="entPrijmeni" FontSize="24" VerticalOptions="Start" HorizontalOptions="Center" MinimumWidthRequest="150" MinimumHeightRequest="50"/>
+            <Entry x:Name="entPrijmeni" FontSize="24" VerticalOptions="Start" BackgroundColor="{StaticResource Gray100}" HorizontalOptions="Center" MinimumWidthRequest="150" MinimumHeightRequest="50"/>
             <Label Text="HESLO"
                    FontSize="24"
                    FontAttributes="Bold"
                    VerticalOptions="Start"
                    HorizontalOptions="Center"/>
-            <Entry x:Name="entNoveHeslo" FontSize="24" VerticalOptions="Start" HorizontalOptions="Center" MinimumWidthRequest="150" MinimumHeightRequest="50" Keyboard="Numeric" MaxLength="5"/>
-            <Button x:Name="btnZmenit" Text="ZMĚNIT" FontSize="28" VerticalOptions="Start" HorizontalOptions="Center" MinimumWidthRequest="150" MinimumHeightRequest="50" Clicked="btnZmenit_Clicked"/>
+            <Entry x:Name="entNoveHeslo" FontSize="24" VerticalOptions="Start" BackgroundColor="{StaticResource Gray100}" HorizontalOptions="Center" MinimumWidthRequest="150" MinimumHeightRequest="50" Keyboard="Numeric" MaxLength="5"/>
+            <Button x:Name="btnZmenit" Text="ZMĚNIT NAPSANÉ" FontSize="28" VerticalOptions="Start" HorizontalOptions="Center" MinimumWidthRequest="150" MinimumHeightRequest="50" Clicked="btnZmenit_Clicked" Margin="5"/>
         </StackLayout>
-        <Button x:Name="btnMenu" Text="MENU" FontSize="24" VerticalOptions="Start" HorizontalOptions="Center" Clicked="btnMenu_Clicked"/>
+        <Button x:Name="btnMenu" Text="MENU" FontSize="28" BackgroundColor="DarkCyan" VerticalOptions="Start" HorizontalOptions="Center" Clicked="btnMenu_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>

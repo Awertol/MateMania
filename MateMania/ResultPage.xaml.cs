@@ -24,8 +24,9 @@ public partial class ResultPage : ContentPage
         }
 		else
 		{
-			imgVysledek.Source = "amogus.png";
-		}
+            imgVysledek.IsVisible = false;
+            lbVysledek.Text += "\n" + "\U0001F340";
+        }
 		if(OfflineOnline.stavPripojeni == true)
 		{
             if (vysledek >= 7)
@@ -49,6 +50,7 @@ public partial class ResultPage : ContentPage
 
     private async void btnMenu_Clicked(object sender, EventArgs e)
     {
+        DbData.RefreshUzivatele();
         Navigation.PopAsync();
         Navigation.PopAsync();
         Navigation.PopAsync();

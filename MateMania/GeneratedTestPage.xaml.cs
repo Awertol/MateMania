@@ -112,7 +112,12 @@ public partial class GeneratedTestPage : ContentPage
             pocitadlo++;
         }
         DbData.VytvoritZadani(vytvoreneZadani);
-        DisplayAlert("Zadání vytvoøeno", $"PIN: {vygPin}", "OK");
+        string pin = "";
+        for (int i = 0; i < vygPin.Length; i++)
+        {
+            pin += OnlinePinPage.pins[Convert.ToInt32(vygPin[i].ToString())-1];
+        }
+        DisplayAlert("Zadání vytvoøeno", $"PIN: {pin}", "OK");
         Navigation.PopAsync();
     }
 }

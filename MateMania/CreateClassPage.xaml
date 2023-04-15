@@ -6,22 +6,27 @@
     <Shell.BackButtonBehavior>
         <BackButtonBehavior IsVisible="False" IsEnabled="False" />
     </Shell.BackButtonBehavior>
-    <VerticalStackLayout>
+    <VerticalStackLayout
+        Spacing="10"
+        Padding="30,0"
+        Margin="0,30,0,0"
+        VerticalOptions="Start">
         <Label 
             Text="VYTVOŘENÍ TŘÍDY"
+            FontSize="40"
             VerticalOptions="Start" 
             HorizontalOptions="Center" />
-        <Label Text="KRAJ: " HorizontalOptions="Center" VerticalOptions="Start" Margin="0,20,0,0"/>
-        <Picker x:Name="pckKraj" SelectedIndex="0" WidthRequest="200" SelectedIndexChanged="pckKraj_SelectedIndexChanged"/>
-        <Label Text="OKRES: " HorizontalOptions="Center" VerticalOptions="Start" Margin="0,20,0,0"/>
-        <Picker x:Name="pckOkres" SelectedIndex="0" WidthRequest="200"/>
-        <Label Text="MĚSTO: " HorizontalOptions="Center" VerticalOptions="Start" Margin="0,20,0,0"/>
-        <Entry x:Name="entMesto" WidthRequest="200" Keyboard="Text"/>
-        <Label Text="ŠKOLA: " HorizontalOptions="Center" VerticalOptions="Start" Margin="0,20,0,0"/>
-        <Entry x:Name="entNazevSkoly" WidthRequest="200" Keyboard="Text"/>
-        <Label Text="TŘÍDA: " HorizontalOptions="Center" VerticalOptions="Start" Margin="0,30,0,0"/>
-        <Picker x:Name="pckTrida" HorizontalOptions="Center" VerticalOptions="Start" WidthRequest="200"/>
-        <Button x:Name="btnPridat" Text="PŘIDAT" Clicked="btnPridat_Clicked"/>
-        <Button x:Name="btnZpet" Text="ZPĚT" Clicked="btnZpet_Clicked"/>
+        <Label Text="KRAJ: " HorizontalOptions="Center" VerticalOptions="Start" Margin="0,20,0,0" FontSize="18"/>
+        <Picker x:Name="pckKraj" SelectedIndex="0" WidthRequest="200" SelectedIndexChanged="pckKraj_SelectedIndexChanged" BackgroundColor="{StaticResource Gray100}"/>
+        <Label Text="OKRES: " HorizontalOptions="Center" VerticalOptions="Start" Margin="0,20,0,0" FontSize="18"/>
+        <Picker x:Name="pckOkres" SelectedIndex="0" WidthRequest="200" BackgroundColor="{StaticResource Gray100}"/>
+        <Label Text="MĚSTO: " HorizontalOptions="Center" VerticalOptions="Start" Margin="0,20,0,0" FontSize="18"/>
+        <Entry x:Name="entMesto" WidthRequest="200" Keyboard="Text" BackgroundColor="{StaticResource Gray100}"/>
+        <Label Text="ŠKOLA: " HorizontalOptions="Center" VerticalOptions="Start" Margin="0,20,0,0" FontSize="18"/>
+        <Entry x:Name="entNazevSkoly" WidthRequest="200" Keyboard="Text" BackgroundColor="{StaticResource Gray100}"/>
+        <Label Text="TŘÍDA: " HorizontalOptions="Center" VerticalOptions="Start" Margin="0,30,0,0" FontSize="18"/>
+        <Picker x:Name="pckTrida" HorizontalOptions="Center" VerticalOptions="Start" WidthRequest="200" BackgroundColor="{StaticResource Gray100}"/>
+        <Button x:Name="btnPridat" Text="PŘIDAT" Clicked="btnPridat_Clicked" FontAttributes="Bold" FontSize="20"/>
+        <Button x:Name="btnZpet" Text="ZPĚT" Clicked="btnZpet_Clicked" BackgroundColor="DarkCyan"/>
     </VerticalStackLayout>
 </ContentPage>

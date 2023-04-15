@@ -6,14 +6,23 @@
     <Shell.BackButtonBehavior>
         <BackButtonBehavior IsVisible="False" IsEnabled="False" />
     </Shell.BackButtonBehavior>
-    <VerticalStackLayout>
+    <VerticalStackLayout 
+        Spacing="15"
+        Padding="30,0"
+        Margin="0,30,0,0"
+        VerticalOptions="Fill">
         <Label 
             Text="TVÁ ZADÁNÍ: "
+            FontSize="40"
             VerticalOptions="Start" 
             HorizontalOptions="Center" />
-        <ListView x:Name="lvSeznamZadani" ItemSelected="lvSeznamZadani_ItemSelected" HorizontalOptions="Center" MinimumWidthRequest="300" ItemsSource="{Binding SeznamZadani}">
-            
-        </ListView>
-        <Button x:Name="btnZpet" Text="ZPĚT" Clicked="btnZpet_Clicked"/>
+        <Frame MaximumHeightRequest="500" BackgroundColor="{StaticResource Gray100}">
+            <ListView x:Name="lvSeznamZadani" ItemSelected="lvSeznamZadani_ItemSelected" Margin="5"
+                      BackgroundColor="{StaticResource Gray100}" VerticalScrollBarVisibility="Always" 
+                      HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" 
+                      MinimumWidthRequest="300" MinimumHeightRequest="300">
+            </ListView>
+        </Frame>
+        <Button x:Name="btnZpet" Text="ZPĚT" Clicked="btnZpet_Clicked" VerticalOptions="End"/>
     </VerticalStackLayout>
 </ContentPage>

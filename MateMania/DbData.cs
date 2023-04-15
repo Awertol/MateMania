@@ -45,6 +45,17 @@ namespace MateMania
             }
             return vracenyUzivatel;
         }
+        public static async void RefreshUzivatele()
+        {
+            if(nactenyUzivatel != null && OfflineOnline.stavPripojeni == true)
+            {
+                HttpResponseMessage odpoved = await client.GetAsync(client.BaseAddress + $"secret/{nactenyUzivatel.Id}");
+                if (odpoved.IsSuccessStatusCode)
+                {
+                    nactenyUzivatel = await odpoved.Content.ReadFromJsonAsync<UserModel>();
+                }
+            }
+        }
         public static async void ZmenitUdaj(string choice, string updatedValue)
         {
             HttpResponseMessage odpoved = await client.PostAsJsonAsync($"/user/Update{choice}/{nactenyUzivatel.Id}/{updatedValue}", nactenyUzivatel);
@@ -163,7 +174,7 @@ namespace MateMania
         }
         public static async void VytvoritZadani(ExamsModel vkladaneZadani)
         {
-            //dodělat
+            vkladaneZadani.Creation = DateTime.Now;
             HttpResponseMessage odpoved = await client.PostAsJsonAsync("/exam/Create", vkladaneZadani);
             odpoved.EnsureSuccessStatusCode();
         }

@@ -16,6 +16,6 @@
         <Button x:Name="btnVygenerovatZadani" Text="Vygenerovat zadání" Clicked="btnVygenerovatZadani_Clicked"/>
         <Button x:Name="btnVysledkyZaku" Text="Výsledky žáků" Clicked="btnVysledkyZaku_Clicked"/>
         <Button x:Name="btnPrehledyTridy" Text="Přehledy ZŠ" Clicked="btnPrehledyTridy_Clicked"/>
-        <Button x:Name="btnMenu" Text="MENU" Clicked="btnMenu_Clicked"/>
+        <Button x:Name="btnMenu" Text="MENU" Clicked="btnMenu_Clicked" Margin="0, 30, 0, 0"/>
     </VerticalStackLayout>
 </ContentPage>

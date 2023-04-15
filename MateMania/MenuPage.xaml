@@ -20,7 +20,8 @@
             x:Name="lbUzivPrezdivka"
             Text="Awertol"
             Margin="0,10,0,10"
-            FontSize="19"
+            FontSize="20"
+            FontAttributes="Bold"
             VerticalOptions="Start" 
             HorizontalOptions="Center" />
         <Label
@@ -30,7 +31,7 @@
             TextColor="Gold"
             VerticalOptions="Start" 
             HorizontalOptions="Center" />
-        <ProgressBar x:Name="pbUzivExp" ProgressColor="{StaticResource Primary}" Progress="0.58" MinimumHeightRequest="15"/>
+        <ProgressBar x:Name="pbUzivExp" ProgressColor="{StaticResource Yellow100Accent}" MinimumHeightRequest="15"/>
         <Button x:Name="btnProcvicovani" FontAttributes="Bold" FontSize="24" Text="PROCVIČOVÁNÍ" BackgroundColor="{StaticResource Primary}" TextColor="Black" Clicked="btnProcvicovani_Clicked"/>
         <Button x:Name="btnOnline" FontAttributes="Bold" FontSize="24" Text="ONLINE" BackgroundColor="{StaticResource Primary}" TextColor="Black"  Clicked="btnOnline_Clicked"/>
         <Button x:Name="btnVysledky" FontAttributes="Bold" FontSize="24" Text="MEDAILE" BackgroundColor="{StaticResource Primary}" TextColor="Black"  Clicked="btnVysledky_Clicked"/>

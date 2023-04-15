@@ -14,25 +14,17 @@ namespace MateMania
             Dictionary<string, int> slovnikPrikladuVysledku = new Dictionary<string, int>();
             if (grade == 1)
             {
-                //vytvoření příkladu, který bude mít násobky 5 - 20
-                int num1 = rnd.Next(6, 20); //19
-                int num2 = rnd.Next(1, 21 - num1);
+                int num1 = rnd.Next(2, 5);
+                int num2 = rnd.Next(1, 5 - num1);
 
-                int vysledekC1 = num1 + num2;
-                string prikladC1 = num1.ToString() + " + " + num2.ToString();
+                int vysledekC1 = (num1 *5) + (num2 *5);
+                string prikladC1 = (num1 * 5).ToString() + " + " + (num2 *5).ToString();
                 slovnikPrikladuVysledku.Add(prikladC1, vysledekC1);
 
                 int osmyPriklad = rnd.Next(0, 2);
-                int kladny = 0;
-                int zaporny = 0;
-                if (osmyPriklad == 0)
-                {
-                    kladny += 1;
-                }
-                else
-                {
-                    zaporny += 1;
-                }
+                int kladny = 0, zaporny = 0;
+                if (osmyPriklad == 0) { kladny += 1; }
+                else { zaporny += 1; }
 
                 for (int i = 0; i < 3 + kladny; i++)
                 {
@@ -43,7 +35,6 @@ namespace MateMania
                         num2 = rnd.Next(1, 11);
                         result = num1 + num2;
                     } while (result > 20 || slovnikPrikladuVysledku.Contains(new KeyValuePair<string, int>($"{num1} + {num2}", result)));
-
                     slovnikPrikladuVysledku.Add($"{num1} + {num2}", result);
                 }
                 for (int i = 0; i < 3 + zaporny; i++)
@@ -55,7 +46,6 @@ namespace MateMania
                         num2 = rnd.Next(1, num1);
                         result = num1 - num2;
                     } while (result > 20 || slovnikPrikladuVysledku.Contains(new KeyValuePair<string, int>($"{num1} - {num2}", result)));
-
                     slovnikPrikladuVysledku.Add($"{num1} - {num2}", result);
                 }
             }
@@ -101,7 +91,7 @@ namespace MateMania
                     int cislo2 = rnd.Next(2, 6);
                     do
                     {
-                        cislo1 = rnd.Next(2, 51);
+                        cislo1 = rnd.Next(cislo2, cislo2 *10 + 1);
                         vysledek = cislo1 / cislo2;
                     } while (cislo1 % cislo2 != 0 || vysledek > 50 || slovnikPrikladuVysledku.ContainsKey($"{cislo1} : {cislo2}"));
                     slovnikPrikladuVysledku.Add($"{cislo1} : {cislo2}", vysledek);
@@ -118,7 +108,7 @@ namespace MateMania
                 int nasobeni = 0;
                 int deleni = 0;
 
-                int zvyseni = rnd.Next(0, 4);
+                int zvyseni = 3;/*rnd.Next(0, 4);*/
                 if (zvyseni == 0) { kladne = 2; }
                 else if (zvyseni == 1) { odecet = 2; }
                 else if (zvyseni == 2) { nasobeni = 2; }
@@ -155,10 +145,10 @@ namespace MateMania
                     do
                     {
                         cisloB = rnd.Next(2, 11);
-                        cisloA = rnd.Next(2, cisloB * 10 + 1);
+                        cisloA = rnd.Next(2, 10) * 100;
                     }
-                    while (cisloB % cisloA != 0 || slovnikPrikladuVysledku.ContainsKey($"{cisloB} : {cisloA}"));
-                    slovnikPrikladuVysledku.Add($"{cisloB} : {cisloA}", cisloB / cisloA);
+                    while (cisloA % cisloB != 0 || slovnikPrikladuVysledku.ContainsKey($"{cisloA} : {cisloB}"));
+                    slovnikPrikladuVysledku.Add($"{cisloA} : {cisloB}", cisloA / cisloB);
                 }
                 for (int i = 0; i < 1 + kladne; i++)
                 {

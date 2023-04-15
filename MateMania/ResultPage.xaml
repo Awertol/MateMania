@@ -9,12 +9,14 @@
     <VerticalStackLayout
         Spacing="25"
         Padding="30,0"
-        Margin="0,60,0,0"
+        Margin="0,30,0,0"
+        HorizontalOptions="Fill"
         VerticalOptions="Start">
         <Label 
             Text="Výsledek"
             VerticalOptions="Start" 
-            HorizontalOptions="Center" 
+            HorizontalOptions="Fill"
+            HorizontalTextAlignment="Center"
             FontSize="36">
             <Label.Shadow>
                 <Shadow Brush="Black"
@@ -25,7 +27,7 @@
         </Label>
         <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="Center" BackgroundColor="{StaticResource Gray100}" Padding="100,10,100,10">
             <Image x:Name="imgVysledek" MaximumHeightRequest="200" />
-            <Label x:Name="lbVysledek" FontSize="36" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,20,0,10"/>
+            <Label x:Name="lbVysledek" FontSize="36" FontAttributes="Bold" TextColor="Black" HorizontalOptions="Fill" HorizontalTextAlignment="Center" VerticalOptions="Fill" Margin="0,20,0,10"/>
         </StackLayout>
         <Button x:Name="btnMenu" Text="MENU" FontAttributes="Bold" Clicked="btnMenu_Clicked"/>
     </VerticalStackLayout>

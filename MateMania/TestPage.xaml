@@ -7,12 +7,13 @@
         <BackButtonBehavior IsVisible="False" IsEnabled="False" />
     </Shell.BackButtonBehavior>
     <VerticalStackLayout
-        Spacing="15"
+        Spacing="10"
         Padding="30,0"
-        Margin="0,60,0,0"
+        Margin="0,20,0,0"
         VerticalOptions="Start">
         <Label 
             Text="Procvičování"
+            FontSize="40"
             VerticalOptions="Start" 
             HorizontalOptions="Center">
             <Label.Shadow>
@@ -23,7 +24,7 @@
             </Label.Shadow>
         </Label>
         
-        <Grid x:Name="grdPriklady" RowSpacing="20">
+        <Grid x:Name="grdPriklady" RowSpacing="15">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.65*"/>
                 <ColumnDefinition Width="0.1*"/>

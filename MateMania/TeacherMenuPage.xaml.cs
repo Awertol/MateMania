@@ -15,7 +15,7 @@ public partial class TeacherMenuPage : ContentPage
             poleCisel[i-1] = i.ToString();
         }
         string? vybranyPocetPrikladu = await DisplayActionSheet("Poèet pøíkladù", "Zrušit", null, poleCisel);
-        if(vybranyPocetPrikladu != "Zrušit")
+        if(vybranyPocetPrikladu != "Zrušit" && vybranyPocetPrikladu != null)
         {
             CreateExamPage tvorbaPrikladuStranka = new(Convert.ToInt32(vybranyPocetPrikladu));
             Navigation.PushAsync(tvorbaPrikladuStranka);

@@ -50,7 +50,7 @@ public partial class ChangeInfoPage : ContentPage
 			DbData.nactenyUzivatel.Surname = entPrijmeni.Text.Trim();
             DbData.ZmenitUdaj("Surname", entPrijmeni.Text.Trim());
         }
-		if(entNoveHeslo.Text != null)
+		if((entNoveHeslo.Text != "" && entNoveHeslo != null)&&entNoveHeslo.Text == DbData.nactenyUzivatel.UserPassword)
 		{
 			if (entNoveHeslo.Text.Length == 5)
 			{
@@ -74,11 +74,7 @@ public partial class ChangeInfoPage : ContentPage
 				}
 			}
 		}
-		
-        else
-        {
-            DisplayAlert("Chyba", "Špatnì zadané heslo, musí obsahovat pøesnì 5 èísel", "OK");
-        }
+		DbData.RefreshUzivatele();
     }
 
     private async void btnZmenaTridy_Clicked(object sender, EventArgs e)
@@ -134,6 +130,7 @@ public partial class ChangeInfoPage : ContentPage
                         string trida = volbaTridy.Substring(volbaTridy.IndexOf("|") + 2, 1).Trim();
 						DbData.ZmenitSkolu(skola, Convert.ToInt32(trida));
 						DbData.ZmenitStavUc(false);
+                        DbData.RefreshUzivatele();
                     }
                 }
             }
