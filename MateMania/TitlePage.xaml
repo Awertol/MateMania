@@ -23,7 +23,7 @@
                 BackgroundColor="{StaticResource Gray100}"
                 TextColor="{StaticResource Gray900}"
                 FontSize="20"
-                HorizontalOptions="CenterAndExpand" MinimumWidthRequest="400" SelectedIndexChanged="pckTituly_SelectedIndexChanged">
+                HorizontalOptions="CenterAndExpand" MinimumWidthRequest="400">
             <Picker.Shadow>
                 <Shadow Brush="Black"
                 Offset="20,20"

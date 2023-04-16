@@ -29,21 +29,24 @@ public partial class MainPage : ContentPage
     private async void btnLogin_Clicked(object sender, EventArgs e)
     {
 		OfflineOnline.stavPripojeni = true;
-		string uzJmeno = entryUzJmeno.Text.Trim();
-		string uzHeslo = entryUzHeslo.Text.Trim();
-        bool isOnlyDigits = Regex.IsMatch(uzHeslo, @"^\d+$");
-		if (isOnlyDigits)
+		if (entryUzJmeno != null && entryUzHeslo != null)
 		{
-			Task<UserModel> uzivatel = DbData.LoginUzivatele(uzJmeno, uzHeslo);
-			UserModel uz = await uzivatel;
-			if (uz != null)
+			string uzJmeno = entryUzJmeno.Text.Trim();
+			string uzHeslo = entryUzHeslo.Text.Trim();
+			bool isOnlyDigits = Regex.IsMatch(uzHeslo, @"^\d+$");
+			if (isOnlyDigits)
 			{
-				MenuPage menuStranka = new MenuPage();
-				Navigation.PushAsync(menuStranka);
-			}
-			else
-			{
-				DisplayAlert("Chyba", "Neplatné přihlašovací údaje", "OK");
+				Task<UserModel> uzivatel = DbData.LoginUzivatele(uzJmeno, uzHeslo);
+				UserModel uz = await uzivatel;
+				if (uz != null)
+				{
+					MenuPage menuStranka = new MenuPage();
+					Navigation.PushAsync(menuStranka);
+				}
+				else
+				{
+					DisplayAlert("Chyba", "Neplatné přihlašovací údaje", "OK");
+				}
 			}
 		}
     }

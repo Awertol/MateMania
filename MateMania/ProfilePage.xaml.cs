@@ -1,10 +1,23 @@
-using MateMania.Models;
+﻿using MateMania.Models;
 
 namespace MateMania;
 
 public partial class ProfilePage : ContentPage
 {
     List<string> seznamTrid = new List<string>();
+    Dictionary<string, string> slovnikOtazek = new Dictionary<string, string>()
+    {
+        {"Kolik je  XVII na druhou?", "289"},
+        {"Pořadí π (pí) v řecké abecedě?", "16"},
+        {"octo + septem * tres = ","29" },
+        {"6!","720" },
+        {"Vyřeš: √400 + √100","30" },
+        {"Vyřeš následující rovnici za x: 5x – 3 + 220 = 55 * 4 + 2x","1" },
+        {"Vyřeš následující rovnici za y: 20 + 10 + 3y = √36 * y","10" },
+        {"Vyřeš následující rovnici za z: 200z + (√16*5z)  = 1100","5" },
+        {"Doplň vzorec: S = 2ab + 2bc + ","2ac" },
+        {"Doplň vzorec: D = b2 - ","4ac" }
+    };
     bool pageStart = true;
 	public ProfilePage()
 	{
@@ -30,11 +43,13 @@ public partial class ProfilePage : ContentPage
         {
             pbUzivExp.Progress = 1.0;
         }
-        double progress = (double)ExpCounter.Experience / max;
+        int cap = max - min; 
+        double progress = ((double)ExpCounter.Experience - min) / cap;
         pbUzivExp.Progress = progress;
         imgPostavaProfil.Source = $"plusak_{DbData.nactenyUzivatel.Avatar}.png";
         NactiSkolu();
     }
+    Random rnd = new Random();
     private async void chbUcitel_CheckedChanged(object sender, CheckedChangedEventArgs e)
     {
         if (pageStart)
@@ -45,16 +60,17 @@ public partial class ProfilePage : ContentPage
         {
             if (chbUcitel.IsChecked)
             {
-                string result = await DisplayPromptAsync("Ot�zka", "Kolik je XVII na druhou?");
-                if (result == "289")
+                string nahodnaOtazka = slovnikOtazek.ElementAt(rnd.Next(0, slovnikOtazek.Count)).Key;
+                string result = await DisplayPromptAsync("Otázka", nahodnaOtazka);
+                if (result.Trim() == slovnikOtazek[nahodnaOtazka])
                 {
-                    await DisplayAlert("Odpov��", "Spr�vn�! M��e� vstoupit do re�imu u�itele", "OK");
+                    await DisplayAlert("Odpověď", "Správně! Můžeš vstoupit do režimu učitele", "OK");
                     DbData.ZmenitStavUc(true);
                     btnRezimUcitele.IsVisible = true;
                 }
                 else
                 {
-                    await DisplayAlert("Odpov��", "�patn�!", "OK");
+                    await DisplayAlert("Odpověď", "Špatně!", "OK");
                     chbUcitel.IsChecked = false;
                 }
             }
@@ -70,10 +86,10 @@ public partial class ProfilePage : ContentPage
         Task<ClassModel> taskSkola = DbData.NajitUzivatelovuSkolu();
         var skola =await taskSkola;
         if (skola == null)
-        { lbUzivZS.Text = "Nevybr�no"; }
+        { lbUzivZS.Text = "Nevybráno"; }
         else
         {
-            lbUzivZS.Text = skola.SchoolName + " " + skola.Grade + ". t��da";
+            lbUzivZS.Text = skola.SchoolName + " " + skola.Grade + ". třída";
         }
     }
 

@@ -118,32 +118,9 @@ namespace MateMania
             }
             return null;
         }
-
-        public static async Task<List<ClassModel>> NajitMesta(string kraj, string okres)
-        {
-            HttpResponseMessage odpoved = await client.GetAsync(client.BaseAddress + $"/class/FindCities/{kraj}/{okres}/");
-            if (odpoved.IsSuccessStatusCode)
-            {
-                var mesta = await odpoved.Content.ReadAsStringAsync();
-                var data = JsonConvert.DeserializeObject<List<ClassModel>>(mesta);
-                return data;
-            }
-            else return null;
-        }
         public static async Task<List<ClassModel>> NajitSkoly()
         {
             HttpResponseMessage odpoved = await client.GetAsync(client.BaseAddress + $"/api/classes/");
-            if (odpoved.IsSuccessStatusCode)
-            {
-                var trida = await odpoved.Content.ReadAsStringAsync();
-                var data = JsonConvert.DeserializeObject<List<ClassModel>>(trida);
-                return data;
-            }
-            else return null;
-        }
-        public static async Task<List<ClassModel>> NajitSkoly(string kraj, string okres, string mesto)
-        {
-            HttpResponseMessage odpoved = await client.GetAsync(client.BaseAddress + $"/class/Find/{kraj}/{okres}/{mesto}");
             if (odpoved.IsSuccessStatusCode)
             {
                 var trida = await odpoved.Content.ReadAsStringAsync();
@@ -163,7 +140,7 @@ namespace MateMania
         }
         public static async Task<List<ExamAnswersModel>> NajitOdpovedi(int idZadani)
         {
-            HttpResponseMessage odpoved = await client.GetAsync(client.BaseAddress + $"/answer/Find/{nactenyUzivatel.Id}/{idZadani}");
+            HttpResponseMessage odpoved = await client.GetAsync(client.BaseAddress + $"/answer/Find/{idZadani}");
             if (odpoved.IsSuccessStatusCode)
             {
                 var odpovedi = await odpoved.Content.ReadAsStringAsync();
@@ -181,6 +158,11 @@ namespace MateMania
         public static async void VytvoritTridu(ClassModel vkladanaTrida)
         {
             HttpResponseMessage odpoved = await client.PostAsJsonAsync("/class/Create", vkladanaTrida);
+            odpoved.EnsureSuccessStatusCode();
+        }
+        public static async void VymazatTridu(string nazevSkoly, int trida)
+        {
+            HttpResponseMessage odpoved = await client.DeleteAsync($"/class/Delete/{nazevSkoly}/{trida}");
             odpoved.EnsureSuccessStatusCode();
         }
         public static async void PridatVysledek(ExamAnswersModel vkladanyVysledek)

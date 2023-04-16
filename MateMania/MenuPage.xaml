@@ -8,7 +8,7 @@
         <BackButtonBehavior IsVisible="False" IsEnabled="False" />
     </Shell.BackButtonBehavior>
     <VerticalStackLayout
-        Spacing="25"
+        Spacing="23"
         Padding="30,0"
         Margin="0,20,0,0"
         VerticalOptions="Start">
@@ -35,5 +35,6 @@
         <Button x:Name="btnOnline" FontAttributes="Bold" FontSize="24" Text="ONLINE" BackgroundColor="{StaticResource Primary}" TextColor="Black"  Clicked="btnOnline_Clicked"/>
         <Button x:Name="btnVysledky" FontAttributes="Bold" FontSize="24" Text="MEDAILE" BackgroundColor="{StaticResource Primary}" TextColor="Black"  Clicked="btnVysledky_Clicked"/>
         <Button x:Name="btnTituly" FontAttributes="Bold" FontSize="24" Text="TITULY" BackgroundColor="{StaticResource Primary}" TextColor="Black"  Clicked="btnTituly_Clicked"/>
+        <Button x:Name="btnAktualizovat" FontSize="28" Text="🔃" Margin="-5" BackgroundColor="{StaticResource Secondary}" Clicked="btnAktualizovat_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>

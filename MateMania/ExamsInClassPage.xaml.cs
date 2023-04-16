@@ -24,20 +24,23 @@ public partial class ExamsInClassPage : ContentPage
 	{
         Task<List<ExamsModel>> taskOtazkyVeTride = DbData.NajitOtazkyTridy();
         List<ExamsModel> Exams = await taskOtazkyVeTride;
-		foreach(var prvekListView in Exams)
-		{
-			string pin = "";
-			for(int i  = 0; i < prvekListView.PIN.Length; i++)
-			{
-				pin += OnlinePinPage.pins[Convert.ToInt32(prvekListView.PIN[i].ToString())-1];
-			}
-			string radek = prvekListView.ExamName + "|" + pin + "|";
-			DateOnly datum = DateOnly.FromDateTime((DateTime)prvekListView.Creation);
-			radek += datum;
-			seznamZadani.Add(radek);
-		}
-        lvSeznamZadani.ItemsSource = seznamZadani;
-		nactenaZadaniTridy = Exams;
+        if (Exams != null)
+        {
+            foreach (var prvekListView in Exams.Where(x => x.TeacherID == DbData.nactenyUzivatel.Id).ToList())
+            {
+                string pin = "";
+                for (int i = 0; i < prvekListView.PIN.Length; i++)
+                {
+                    pin += OnlinePinPage.pins[Convert.ToInt32(prvekListView.PIN[i].ToString()) - 1];
+                }
+                string radek = prvekListView.ExamName + "|" + pin + "|";
+                DateOnly datum = DateOnly.FromDateTime((DateTime)prvekListView.Creation);
+                radek += datum;
+                seznamZadani.Add(radek);
+            }
+            lvSeznamZadani.ItemsSource = seznamZadani;
+            nactenaZadaniTridy = Exams;
+        }
     }
     private async void lvSeznamZadani_ItemSelected(object sender, SelectedItemChangedEventArgs e)
     {

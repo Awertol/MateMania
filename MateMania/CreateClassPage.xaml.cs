@@ -6,13 +6,13 @@ public partial class CreateClassPage : ContentPage
 {
 	string[] kraje = 
 	{
-		"Hlavní mìsto Praha", "Støedoèeský", "Jihoèeský", "Plzeòský", "Karlovarský", "Ústecký", "Liberecký", "Královehradecký", "Pardubický", "Vysoèina", "Jihomoravský", "Olomoucký", "Moravskoslezský", "Zlínský" 
+		"Praha", "Støedoèeský", "Jihoèeský", "Plzeòský", "Karlovarský", "Ústecký", "Liberecký", "Královehradecký", "Pardubický", "Vysoèina", "Jihomoravský", "Olomoucký", "Moravskoslezský", "Zlínský" 
 	};
 	string[] okresy;
     string[] tridy = { "1", "2", "3" };
 	Dictionary<string, string[]> slovnikOkresy = new Dictionary<string, string[]>
 	{
-		{"Hlavní mìsto Praha", new string[] {"Praha"} },
+		{"Praha", new string[] {"Praha"} },
         {"Støedoèeský",new string[] {"Benešov", "Beroun", "Kladno", "Kolín", "Kutná Hora", "Mìlník", "Mladá Boleslav", "Nymburk", "Praha-východ", "Praha-západ", "Pøíbram", "Rakovník"}},
         {"Jihoèeský", new string[] {"Èeské Budìjovice", "Èeský Krumlov", "Jindøichùv Hradec", "Písek", "Prachatice", "Strakonice", "Tábor"} },
         {"Plzeòský", new string[] {"Domažlice", "Klatovy", "Plzeò-jih", "Plzeò-mìsto", "Plzeò-sever", "Rokycany", "Tachov"} },
@@ -56,15 +56,18 @@ public partial class CreateClassPage : ContentPage
 		ClassModel vytvorenaTrida = new ClassModel();
 		vytvorenaTrida.Grade = Convert.ToInt32(pckTrida.SelectedItem as string);
 		vytvorenaTrida.SchoolName = entNazevSkoly.Text.Trim();
+		vytvorenaTrida.TeacherId = DbData.nactenyUzivatel.Id;
 		vytvorenaTrida.City = entMesto.Text.Trim();
-		vytvorenaTrida.Region = pckKraj.SelectedItem.ToString();
-        vytvorenaTrida.District = pckOkres.SelectedItem.ToString();
+		vytvorenaTrida.Region = pckOkres.SelectedItem.ToString();
+        vytvorenaTrida.District = pckKraj.SelectedItem.ToString();
 		DbData.VytvoritTridu(vytvorenaTrida);
 		DisplayAlert("Úspìch", "Tøída byla vytvoøena", "OK");
+		Navigation.PopAsync();
     }
 
     private void btnZpet_Clicked(object sender, EventArgs e)
     {
 		Navigation.PopAsync();
+        Navigation.PopAsync();
     }
 }

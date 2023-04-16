@@ -15,7 +15,16 @@ public partial class CreateExamPage : ContentPage
         for (int i = 0; i < pocetRadku; i++)
         {
             Entry zadavane1 = new Entry();
-            zadavane1.FontSize = 34;
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                zadavane1.FontSize = 26;
+            }
+            else if (Device.RuntimePlatform == Device.UWP)
+            {
+                zadavane1.FontSize = 34;
+            }
+            zadavane1.BackgroundColor = Colors.White;
+            zadavane1.TextColor = Colors.Black;
             zadavane1.WidthRequest = 110;
             zadavane1.HorizontalOptions = LayoutOptions.CenterAndExpand;
             zadavane1.VerticalOptions = LayoutOptions.Start;
@@ -30,7 +39,16 @@ public partial class CreateExamPage : ContentPage
             znamenko.VerticalOptions = LayoutOptions.Start;
 
             Entry zadavane2 = new Entry();
-            zadavane2.FontSize = 34;
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                zadavane2.FontSize = 26;
+            }
+            else if (Device.RuntimePlatform == Device.UWP)
+            {
+                zadavane2.FontSize = 34;
+            }
+            zadavane2.BackgroundColor = Colors.White;
+            zadavane2.TextColor = Colors.Black;
             zadavane2.WidthRequest = 110;
             zadavane2.ClassId = "2";
             zadavane2.HorizontalOptions = LayoutOptions.CenterAndExpand;
@@ -85,41 +103,104 @@ public partial class CreateExamPage : ContentPage
             vytvorenePriklady.TeacherID = DbData.nactenyUzivatel.Id;
             vytvorenePriklady.ExamName = (nazevZadani == "" || nazevZadani == "Zrušit / Vymazat název") ? null : nazevZadani;
             List<string> zadanePriklady = LoadProblemsFromGrid();
-            switch(pocetRadku)
+            bool chybaVZadani = false;
+            foreach(string priklad in zadanePriklady)
             {
-                case 1:
-                    vytvorenePriklady.Problem1 = zadanePriklady[0] != null ? zadanePriklady[0] : "1+1";
-                    break;
-                case 2:
-                    vytvorenePriklady.Problem2 = zadanePriklady[1];
-                    goto case 1;
-                case 3:
-                    vytvorenePriklady.Problem3 = zadanePriklady[2];
-                    goto case 2;
-                case 4:
-                    vytvorenePriklady.Problem4 = zadanePriklady[3];
-                    goto case 3;
-                case 5:
-                    vytvorenePriklady.Problem5 = zadanePriklady[4];
-                    goto case 4;
-                case 6:
-                    vytvorenePriklady.Problem6 = zadanePriklady[5];
-                    goto case 5;
-                case 7:
-                    vytvorenePriklady.Problem7 = zadanePriklady[6];
-                    goto case 6;
-                case 8:
-                    vytvorenePriklady.Problem8 = zadanePriklady[7];
-                    goto case 7;
+                char operace;
+                string[] rozdelenyPriklad = new string[3];
+                if(priklad.Contains('+'))
+                {
+                    rozdelenyPriklad = priklad.Split('+');
+                    if (Convert.ToInt32(rozdelenyPriklad[0]) < 1 || Convert.ToInt32(rozdelenyPriklad[1]) < 1)
+                    {
+                        DisplayAlert("Špatnì zadaná hodnota", "Zkontrolujte prosím znovu", "OK");
+                        chybaVZadani = true;
+                        break;
+                    }
+                }
+                else if(priklad.Contains('-'))
+                {
+                    rozdelenyPriklad = priklad.Split('-');
+                    if(rozdelenyPriklad.Length > 2)
+                    {
+                        DisplayAlert("Špatnì zadaná hodnota", "Zkontrolujte prosím znovu", "OK");
+                        chybaVZadani = true;
+                        break;
+                    }
+                    if (Convert.ToInt32(rozdelenyPriklad[0]) < 1 || Convert.ToInt32(rozdelenyPriklad[1]) < 1)
+                    {
+                        DisplayAlert("Špatnì zadaná hodnota", "Zkontrolujte prosím znovu", "OK");
+                        chybaVZadani = true;
+                        break;
+                    }
+                }
+                else if(priklad.Contains('*'))
+                {
+                    rozdelenyPriklad = priklad.Split("*");
+                    if (Convert.ToInt32(rozdelenyPriklad[0]) < 1 || Convert.ToInt32(rozdelenyPriklad[1]) < 1)
+                    {
+                        DisplayAlert("Špatnì zadaná hodnota", "Zkontrolujte prosím znovu", "OK");
+                        chybaVZadani = true;
+                        break;
+                    }
+                }
+                else if (priklad.Contains(':'))
+                {
+                    rozdelenyPriklad = priklad.Split(":");
+                    if (Convert.ToInt32(rozdelenyPriklad[0]) < 1 || Convert.ToInt32(rozdelenyPriklad[1]) < 1)
+                    {
+                        DisplayAlert("Špatnì zadaná hodnota", "Zkontrolujte prosím znovu", "OK");
+                        chybaVZadani = true;
+                        break;
+                    }
+                }
+                if (chybaVZadani == false)
+                {
+                    chybaVZadani = Regex.IsMatch(priklad, @"^\d+$");
+                }
             }
-            DbData.VytvoritZadani(vytvorenePriklady);
-            string pin = "";
-            for (int i = 0; i < vygPin.Length; i++)
+            if (chybaVZadani == false)
             {
-                pin += OnlinePinPage.pins[Convert.ToInt32(vygPin[i].ToString())-1];
+                switch (pocetRadku)
+                {
+                    case 1:
+                        vytvorenePriklady.Problem1 = zadanePriklady[0] != null ? zadanePriklady[0] : "1+1";
+                        break;
+                    case 2:
+                        vytvorenePriklady.Problem2 = zadanePriklady[1];
+                        goto case 1;
+                    case 3:
+                        vytvorenePriklady.Problem3 = zadanePriklady[2];
+                        goto case 2;
+                    case 4:
+                        vytvorenePriklady.Problem4 = zadanePriklady[3];
+                        goto case 3;
+                    case 5:
+                        vytvorenePriklady.Problem5 = zadanePriklady[4];
+                        goto case 4;
+                    case 6:
+                        vytvorenePriklady.Problem6 = zadanePriklady[5];
+                        goto case 5;
+                    case 7:
+                        vytvorenePriklady.Problem7 = zadanePriklady[6];
+                        goto case 6;
+                    case 8:
+                        vytvorenePriklady.Problem8 = zadanePriklady[7];
+                        goto case 7;
+                }
+                DbData.VytvoritZadani(vytvorenePriklady);
+                string pin = "";
+                for (int i = 0; i < vygPin.Length; i++)
+                {
+                    pin += OnlinePinPage.pins[Convert.ToInt32(vygPin[i].ToString()) - 1];
+                }
+                DisplayAlert("Vytvoøeno nové zadání", $"PIN: {pin}\nZadání jsou po 14 dnech mazána", "OK");
+                Navigation.PopAsync();
             }
-            DisplayAlert("Vytvoøeno nové zadání", $"PIN: {pin}\nZadání jsou po 14 dnech mazána", "OK");
-            Navigation.PopAsync();
+            else
+            {
+                DisplayAlert("Zkontrolujte pøíklady", "Aplikace neumožòuje zadání desetinných, záporných èísel a speciálních znakù", "OK");
+            }
         }
     }
     private List<string> LoadProblemsFromGrid()

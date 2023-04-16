@@ -1,67 +1,55 @@
 using MateMania.Models;
+using Microsoft.Maui;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace MateMania;
 
 public partial class ChangeInfoPage : ContentPage
 {
-    List<string> seznam = new List<string>();
+    List<ClassModel> seznam = new();
 	public ChangeInfoPage()
 	{
 		InitializeComponent();
+		NajdiSkoly();
     }
-    private async Task<List<ClassModel>> Nacti(string kraj, string okres, string mesto)
-    {
-        seznam.Clear();
-        Task<List<ClassModel>> taskTridy = DbData.NajitSkoly(kraj, okres, mesto);
-        var nacteneTridy = await taskTridy;
-        if (nacteneTridy == null)
-        {
-            seznam.Add("Žádné tøídy nebyly pøidány");
-        }
-		return nacteneTridy;
-    }
-    private async Task<List<ClassModel>> Nacti(string kraj, string okres)
+	private async void NajdiSkoly()
 	{
-		seznam.Clear();
-        Task<List<ClassModel>> taskMesta = DbData.NajitMesta(kraj, okres);
-		var nactenaMesta = await taskMesta;
-		if (nactenaMesta == null)
-		{
-			seznam.Add("Žádné tøídy nebyly pøidány");
-		}
-		return nactenaMesta;
+        Task<List<ClassModel>> taskNajitVsechnyTridy = DbData.NajitSkoly();
+		seznam = await taskNajitVsechnyTridy;
     }
     private void btnZmenit_Clicked(object sender, EventArgs e)
     {
-		if(entPrezdivka.Text != null)
+		if(entPrezdivka.Text != null && entPrezdivka.Text != "")
 		{
 			DbData.nactenyUzivatel.Nickname = entPrezdivka.Text.Trim();
 			DbData.ZmenitUdaj("Nickname", entPrezdivka.Text.Trim());
 		}
-		if(entJmeno.Text != null)
+		if(entJmeno.Text != null && entJmeno.Text != "")
 		{
             DbData.nactenyUzivatel.Firstname = entJmeno.Text.Trim();
             DbData.ZmenitUdaj("Firstname", entJmeno.Text.Trim());
         }
-		if(entPrijmeni.Text != null)
+		if(entPrijmeni.Text != null && entPrijmeni.Text != "")
 		{
 			DbData.nactenyUzivatel.Surname = entPrijmeni.Text.Trim();
             DbData.ZmenitUdaj("Surname", entPrijmeni.Text.Trim());
         }
-		if((entNoveHeslo.Text != "" && entNoveHeslo != null)&&entNoveHeslo.Text == DbData.nactenyUzivatel.UserPassword)
+		if((entNoveHeslo.Text != "" && entNoveHeslo != null)&&entNoveHeslo.Text != DbData.nactenyUzivatel.UserPassword)
 		{
 			if (entNoveHeslo.Text.Length == 5)
 			{
 				int passCheck = 0;
 				for (int i = 0; i < entNoveHeslo.Text.Trim().Length; i++)
 				{
-					if (char.IsAsciiDigit(entNoveHeslo.Text.Trim()[i]))
-					{
+                    string kontrola = entNoveHeslo.ToString();
+                    bool isOnlyDigits = Regex.IsMatch(kontrola, @"^\d+$");
+                    if (isOnlyDigits)
+                    {
 						passCheck++;
-					}
-				}
+                    }
+                }
 				if (passCheck == 5)
 				{
 					DbData.nactenyUzivatel.UserPassword = entNoveHeslo.Text.Trim();
@@ -81,11 +69,11 @@ public partial class ChangeInfoPage : ContentPage
     {
         string[] kraje =
 		{
-			"Hlavní mìsto Praha", "Støedoèeský", "Jihoèeský", "Plzeòský", "Karlovarský", "Ústecký", "Liberecký", "Královehradecký", "Pardubický", "Vysoèina", "Jihomoravský", "Olomoucký", "Moravskoslezský", "Zlínský"
+			"Praha", "Støedoèeský", "Jihoèeský", "Plzeòský", "Karlovarský", "Ústecký", "Liberecký", "Královehradecký", "Pardubický", "Vysoèina", "Jihomoravský", "Olomoucký", "Moravskoslezský", "Zlínský"
 		};
         Dictionary<string, string[]> slovnikOkresy = new Dictionary<string, string[]>
 		{
-			{"Hlavní mìsto Praha", new string[] {"Praha"} },
+			{"Praha", new string[] {"Praha"} },
 			{"Støedoèeský",new string[] {"Benešov", "Beroun", "Kladno", "Kolín", "Kutná Hora", "Mìlník", "Mladá Boleslav", "Nymburk", "Praha-východ", "Praha-západ", "Pøíbram", "Rakovník"}},
 			{"Jihoèeský", new string[] {"Èeské Budìjovice", "Èeský Krumlov", "Jindøichùv Hradec", "Písek", "Prachatice", "Strakonice", "Tábor"} },
 			{"Plzeòský", new string[] {"Domažlice", "Klatovy", "Plzeò-jih", "Plzeò-mìsto", "Plzeò-sever", "Rokycany", "Tachov"} },
@@ -110,28 +98,24 @@ public partial class ChangeInfoPage : ContentPage
                 string volbaOkresu = await DisplayActionSheet("OKRESY: ", "Zrušit", null, mozneOkresy);
 				if(volbaOkresu != null && volbaOkresu != "Zrušit")
 				{
-                    Task<List<ClassModel>> taskMesta = Nacti(volbaKraje, volbaOkresu);
-					List<ClassModel> seznamMest = await taskMesta;
-					foreach(var mesto in seznamMest)
+                    var unikatniMestaVOkresu = seznam.Where(x => x.District == volbaKraje && x.Region == volbaOkresu).Select(x => x.City).Distinct().ToList();
+					if (unikatniMestaVOkresu != null)
 					{
-						seznam.Add(mesto.City);
-					}
-                    string volbaMesta = await DisplayActionSheet("MÌSTA: ", "Zrušit", null, seznam.ToArray());
-					if(volbaMesta != null && volbaMesta != "Zrušit")
-					{
-                        Task<List<ClassModel>> taskTridyMesta = Nacti(volbaKraje, volbaOkresu, volbaMesta);
-                        List<ClassModel> seznamTridVMeste = await taskTridyMesta;
-                        foreach(var tridavemeste in seznamTridVMeste)
+						string volbaMesta = await DisplayActionSheet("MÌSTA: ", "Zrušit", null, unikatniMestaVOkresu.ToArray());
+						if (volbaMesta != null && volbaMesta != "Zrušit")
 						{
-							seznam.Add(tridavemeste.SchoolName + " | " + tridavemeste.Grade + ". tø");
+							List<string> seznamTridVMeste = seznam.Where(x => x.District == volbaKraje && x.Region == volbaOkresu && x.City == volbaMesta).Select(x => x.SchoolName + " | " + x.Grade + ". tø").Distinct().ToList();
+							if (seznamTridVMeste != null)
+							{
+								string volbaTridy = await DisplayActionSheet("TØÍDY: ", "Zrušit", null, seznamTridVMeste.ToArray());
+								string skola = volbaTridy.Substring(0, volbaTridy.IndexOf("|")).Trim();
+								string trida = volbaTridy.Substring(volbaTridy.IndexOf("|") + 2, 1).Trim();
+								DbData.ZmenitSkolu(skola, Convert.ToInt32(trida));
+								DbData.ZmenitStavUc(false);
+								DbData.RefreshUzivatele();
+							}
 						}
-                        string volbaTridy = await DisplayActionSheet("TØÍDY: ", "Zrušit", null, seznam.ToArray());
-						string skola = volbaTridy.Substring(0, volbaTridy.IndexOf("|")).Trim();
-                        string trida = volbaTridy.Substring(volbaTridy.IndexOf("|") + 2, 1).Trim();
-						DbData.ZmenitSkolu(skola, Convert.ToInt32(trida));
-						DbData.ZmenitStavUc(false);
-                        DbData.RefreshUzivatele();
-                    }
+					}
                 }
             }
         }

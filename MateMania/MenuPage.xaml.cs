@@ -17,16 +17,27 @@ public partial class MenuPage : ContentPage
             btnOnline.IsVisible = false;
             btnVysledky.IsVisible = false;
             btnTituly.IsVisible = false;
+            btnAktualizovat.IsVisible = false;
         }
         else
         {
-            lbUzivPrezdivka.Text = DbData.nactenyUzivatel.Nickname;
-            lbUzivTitul.Text = TitlePage.slovnikTitulu.FirstOrDefault(x => x.Value == DbData.nactenyUzivatel.ChosenTitle).Key;
-            imgPostava.Source = $"plusak_{DbData.nactenyUzivatel.Avatar}.png";
-            //imgPostava.Source = $"postava{DbData.nactenyUzivatel.Avatar}.png";
+            RefreshUdaju();
         }
 	}
-
+    private void RefreshUdaju()
+    {
+        DbData.RefreshUzivatele();
+        lbUzivPrezdivka.Text = DbData.nactenyUzivatel.Nickname;
+        if(DbData.nactenyUzivatel.ChosenTitle == 0)
+        { 
+            lbUzivTitul.Text = "Žádný";
+        }
+        else
+        {
+            lbUzivTitul.Text = TitlePage.slovnikTitulu.FirstOrDefault(x => x.Value == DbData.nactenyUzivatel.ChosenTitle).Key;
+        }
+        imgPostava.Source = $"plusak_{DbData.nactenyUzivatel.Avatar}.png";
+    }
     private void btnTituly_Clicked(object sender, EventArgs e)
     {
 		TitlePage titulyStranka = new TitlePage();
@@ -55,5 +66,10 @@ public partial class MenuPage : ContentPage
     {
         OnlinePinPage onlinePinPage = new OnlinePinPage();
         Navigation.PushAsync(onlinePinPage);
+    }
+
+    private void btnAktualizovat_Clicked(object sender, EventArgs e)
+    {
+        RefreshUdaju();
     }
 }

@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 namespace MateMania;
 
 public partial class TitlePage : ContentPage
@@ -73,15 +75,16 @@ public partial class TitlePage : ContentPage
         Navigation.PushAsync(zahadaStranka);
     }
 
-    private void pckTituly_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        int cisloTitulu = slovnikTitulu[pckTituly.SelectedItem as string];
-        DbData.NastavitTitul(cisloTitulu);
-        DbData.RefreshUzivatele();
-    }
-
     private void btnZpet_Clicked(object sender, EventArgs e)
     {
+        int cisloTitulu = DbData.nactenyUzivatel.ChosenTitle;
+        if(pckTituly.SelectedItem != null)
+        {
+            cisloTitulu = slovnikTitulu[pckTituly.SelectedItem as string];
+            DbData.NastavitTitul(cisloTitulu);
+            DbData.nactenyUzivatel.ChosenTitle = cisloTitulu;
+        }
         Navigation.PopAsync();
+        DbData.NastavitTitul(cisloTitulu);
     }
 }

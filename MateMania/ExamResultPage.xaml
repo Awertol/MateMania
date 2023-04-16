@@ -17,8 +17,8 @@
             FontSize="40"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <Frame BackgroundColor="{StaticResource Gray100}" MaximumHeightRequest="600" x:Name="frame">
-            <ListView x:Name="lvVysledkyZaku" MinimumWidthRequest="250" HorizontalOptions="Center" VerticalScrollBarVisibility="Always" VerticalOptions="FillAndExpand"/>
+        <Frame BackgroundColor="{StaticResource Gray100}" MinimumHeightRequest="560" x:Name="frame">
+            <ListView x:Name="lvVysledkyZaku" MinimumWidthRequest="250" HorizontalOptions="Fill" VerticalScrollBarVisibility="Always" VerticalOptions="FillAndExpand"/>
         </Frame>
         <Button x:Name="btnZpet" Text="ZPĚT" Clicked="btnZpet_Clicked"/>
     </VerticalStackLayout>

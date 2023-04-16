@@ -1,5 +1,6 @@
 using MateMania.Models;
 using System.Linq.Expressions;
+using System.Text.RegularExpressions;
 
 namespace MateMania;
 
@@ -36,9 +37,11 @@ public partial class GeneratedTestPage : ContentPage
             string znak = "";
             foreach(var item2 in item.Key.Trim())
             {
-                if(!char.IsAsciiDigit(item2))
+                string znak2 = item2.ToString();
+                bool isOnlyDigits = Regex.IsMatch(znak, @"^\d+$");
+                if(isOnlyDigits)
                 {
-                    znak += item2;
+                    znak += znak2;
                 }
             }
             Label cislo1 = new Label();

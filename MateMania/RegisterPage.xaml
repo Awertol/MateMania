@@ -17,7 +17,7 @@
             HorizontalOptions="Center"
             FontSize="36"/>
         <Label Text="Zadej prosím svou přezdívku" HorizontalOptions="Center" FontSize="24"/>
-        <Entry x:Name="entryPrezdivka" HorizontalOptions="Center" MinimumWidthRequest="150" MaxLength="20"/>
+        <Entry x:Name="entryPrezdivka" HorizontalOptions="Center" MinimumWidthRequest="150" MaxLength="20" BackgroundColor="White"/>
         <Button Text="REGISTROVAT" x:Name="btnRegistrovat" HorizontalOptions="Center" VerticalOptions="Start" HeightRequest="50" FontSize="32" Clicked="btnRegistrovat_Clicked"/>
         <Button Text="ZPĚT" x:Name="btnZpet" HorizontalOptions="Center" VerticalOptions="Center" Clicked="btnZpet_Clicked"/>
     </VerticalStackLayout>

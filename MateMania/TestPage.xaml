@@ -24,7 +24,7 @@
             </Label.Shadow>
         </Label>
         
-        <Grid x:Name="grdPriklady" RowSpacing="15">
+        <Grid x:Name="grdPriklady" RowSpacing="{OnPlatform Android=26, UWP=30}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.65*"/>
                 <ColumnDefinition Width="0.1*"/>
@@ -41,6 +41,6 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
         </Grid>
-        <Button x:Name="btnHotovo" Text="HOTOVO" VerticalOptions="Start" FontSize="36" Clicked="btnHotovo_Clicked"/>
+        <Button x:Name="btnHotovo" Text="HOTOVO" VerticalOptions="Start" FontSize="32" Clicked="btnHotovo_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>

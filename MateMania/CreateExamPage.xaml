@@ -9,15 +9,16 @@
     <VerticalStackLayout
         Spacing="20"
         Padding="10"
-        Margin="0,60,0,0"
-        VerticalOptions="Start">
+        Margin="0,30,0,0"
+        VerticalOptions="Fill">
         <Label 
             Text="Vytvoření příkladů"
             Margin="0,0,0,20"
             FontSize="36"
+            TextColor="White"
             VerticalOptions="Start" 
             HorizontalOptions="Center" />
-        <Grid x:Name="grdTvorenePriklady" HorizontalOptions="Center" VerticalOptions="FillAndExpand" BackgroundColor="Cyan">
+        <Grid x:Name="grdTvorenePriklady" HorizontalOptions="Center" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource Gray100}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.40*"/>
                 <ColumnDefinition Width="0.20*"/>

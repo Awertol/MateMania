@@ -20,7 +20,7 @@
             FontSize="26"
             VerticalOptions="Start" 
             HorizontalOptions="Center" />
-        <ProgressBar x:Name="pbUzivExp" ProgressColor="{StaticResource Yellow100Accent}" BackgroundColor="{StaticResource Primary}" MinimumHeightRequest="15"/>
+        <ProgressBar x:Name="pbUzivExp" ProgressColor="{StaticResource Yellow100Accent}" MinimumHeightRequest="15"/>
         <Label
             x:Name="lbUzivLevel"
             Text="Úroveň 3"

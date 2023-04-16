@@ -29,6 +29,17 @@ public partial class OnlinePinPage : ContentPage
 		vkladanyPinButton.MaximumWidthRequest = 30;
         vkladanyPinButton.Clicked += VkladanyPinButton_Clicked;
 		vkladanyPinButton.BackgroundColor = Colors.White;
+		if(Device.RuntimePlatform == Device.Android)
+		{
+            vkladanyPinButton.FontSize = 24;
+            vkladanyPinButton.Scale = 0.8;
+        }
+        else if(Device.RuntimePlatform == Device.UWP)
+		{
+            vkladanyPinButton.FontSize = 24;
+            vkladanyPinButton.Scale = 1.0;
+            vkladanyPinButton.Padding = new Thickness(0, 0, 0, 0);
+        }
 		vkladanyPinButton.FontSize = 24;
 		vkladanyPinButton.Scale = 0.8;
 		vkladanyPinButton.Text += pins[Convert.ToInt32(tagPressed) - 1];

@@ -21,7 +21,18 @@ public partial class ExamResultPage : ContentPage
                 var uzivatelVysledku = lideTridy.FirstOrDefault(x => x.Id == vysledek.UserID);
                 if (uzivatelVysledku != null)
                 {
-                    string radek = uzivatelVysledku.Firstname + " " + uzivatelVysledku.Surname + " | (" + vysledek.Result + " / " + vysledek.MaxPossible + ")";
+                    string vyslednyIdentifikator = "";
+                    string? uzIdentifikator1 = uzivatelVysledku.Firstname;
+                    string? uzIdentifikator2 = uzivatelVysledku.Surname;
+                    if(uzIdentifikator1 == null || uzIdentifikator2 == null)
+                    {
+                        vyslednyIdentifikator = uzIdentifikator1 + " " + uzIdentifikator2;
+                    }
+                    else
+                    {
+                        vyslednyIdentifikator = uzivatelVysledku.Nickname;
+                    }
+                    string radek = vyslednyIdentifikator + " | (" + vysledek.Result + " / " + vysledek.MaxPossible + ")";
                     vysledkyZaku.Add(radek);
                 }
             }
@@ -38,5 +49,6 @@ public partial class ExamResultPage : ContentPage
     private void btnZpet_Clicked(object sender, EventArgs e)
     {
 		Navigation.PopAsync();
+        Navigation.PopAsync();
     }
 }
