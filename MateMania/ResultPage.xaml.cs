@@ -4,6 +4,10 @@ using System.Xml.Linq;
 
 namespace MateMania;
 
+internal static class ResultPageAnti
+{
+    public static bool Again = false;
+}
 public partial class ResultPage : ContentPage
 {
 	public ResultPage(int vysledek)
@@ -27,7 +31,7 @@ public partial class ResultPage : ContentPage
             imgVysledek.IsVisible = false;
             lbVysledek.Text += "\n" + "\U0001F340";
         }
-		if(OfflineOnline.stavPripojeni == true)
+		if(OfflineOnline.stavPripojeni == true && ResultPageAnti.Again == false)
 		{
             if (vysledek >= 7)
             {
@@ -45,6 +49,7 @@ public partial class ResultPage : ContentPage
             {
                 DbData.ZmenitTitul(2);
             }
+            ResultPageAnti.Again = false;
         }
 	}
 

@@ -79,4 +79,9 @@ public partial class TitlePage : ContentPage
         DbData.NastavitTitul(cisloTitulu);
         DbData.RefreshUzivatele();
     }
+
+    private void btnZpet_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PopAsync();
+    }
 }

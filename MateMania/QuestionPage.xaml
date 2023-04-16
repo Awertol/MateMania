@@ -9,18 +9,19 @@
     <VerticalStackLayout
         Spacing="25"
         Padding="30,0"
-        Margin="0,60,0,0"
+        Margin="0,30,0,0"
         VerticalOptions="Start">
         <Label 
-            Text="ZÁHADA"
-            VerticalOptions="Start" 
+            Text="¿ ZÁHADA ?"
+            VerticalOptions="Start"
+            FontSize="40"
             HorizontalOptions="Center" />
-        <StackLayout HorizontalOptions="Center" Padding="100,10,100,10" BackgroundColor="{StaticResource Gray100}">
-            <Label x:Name="lbOtazka" FontSize="24" Margin="4"/>
+        <StackLayout HorizontalOptions="Fill" Padding="10,10,10,10" BackgroundColor="{StaticResource Gray100}">
+            <Label x:Name="lbOtazka" FontSize="24" Margin="4" TextColor="Black"/>
             <Label HeightRequest="5" BackgroundColor="{StaticResource Primary}" Padding="100,0,100,0"/>
-            <Label Text="Myslím si ..." FontAttributes="Bold"/>
+            <Label Text="Myslím si ..." FontAttributes="Bold" TextColor="Black" FontSize="24" Margin="0,10,0,0"/>
             <Border StrokeThickness="1" Stroke="Black">
-                <Entry x:Name="entryOdpovedZahada" FontSize="24" HorizontalOptions="Center" VerticalOptions="Start" Keyboard="Chat"/>
+                <Entry x:Name="entryOdpovedZahada" FontSize="28" TextColor="Black" HorizontalOptions="Center" VerticalOptions="Start" Keyboard="Chat"/>
             </Border>
             <Button x:Name="btnOdpovedZahada" FontSize="48" FontAttributes="Bold" Text="MÁM TO!" Clicked="btnOdpovedZahada_Clicked"/>
         </StackLayout>

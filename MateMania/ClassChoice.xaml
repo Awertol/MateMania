@@ -7,19 +7,19 @@
         <BackButtonBehavior IsVisible="False" IsEnabled="False" />
     </Shell.BackButtonBehavior>
     <VerticalStackLayout
-        Spacing="25"
+        Spacing="15"
         Padding="30,0"
-        Margin="0,60,0,0"
+        Margin="0,30,0,0"
         VerticalOptions="Start">
         <StackLayout BackgroundColor="{StaticResource Gray100}" HorizontalOptions="CenterAndExpand" Padding="100,0,100,0">
-            <Label Text="1. třída" FontSize="28"/>
-            <ImageButton x:Name="img1Trida" Source="trida1.png" MaximumHeightRequest="160" Clicked="imgTrida_Clicked" ClassId="1"/>
+            <Label Text="1. třída" FontAttributes="Bold" FontSize="28" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,10,0,0"/>
+            <ImageButton x:Name="img1Trida" Source="trida1.png" MaximumHeightRequest="170" Clicked="imgTrida_Clicked" ClassId="1"/>
             <Label MaximumHeightRequest="5" MinimumHeightRequest="5" BackgroundColor="{StaticResource Primary}" HorizontalOptions="FillAndExpand" Margin="-100,10,-100,10"/>
-            <Label Text="2. třída" FontSize="28"/>
-            <ImageButton x:Name="img2Trida" Source="trida2.png" MaximumWidthRequest="150" Clicked="imgTrida_Clicked" ClassId="2"/>
+            <Label Text="2. třída" FontAttributes="Bold" FontSize="28" TextColor="Black" HorizontalTextAlignment="Center"/>
+            <ImageButton x:Name="img2Trida" Source="trida2.png" MaximumHeightRequest="150" Clicked="imgTrida_Clicked" ClassId="2"/>
             <Label MaximumHeightRequest="5" MinimumHeightRequest="5" BackgroundColor="{StaticResource Primary}" HorizontalOptions="FillAndExpand" Margin="-100,10,-100,10"/>
-            <Label Text="3. třída" FontSize="28"/>
-            <ImageButton x:Name="img3Trida" Source="trida3.png" MaximumWidthRequest="150" Clicked="imgTrida_Clicked" ClassId="3"/>
+            <Label Text="3. třída" FontAttributes="Bold" FontSize="28" TextColor="Black" HorizontalTextAlignment="Center"/>
+            <ImageButton x:Name="img3Trida" Source="trida3.png" MaximumHeightRequest="150" Clicked="imgTrida_Clicked" ClassId="3"/>
         </StackLayout>
         <Button x:Name="btnZpet"
                 Clicked="btnZpet_Clicked"

@@ -9,14 +9,21 @@
     <VerticalStackLayout
         Spacing="25"
         Padding="30,0"
-        Margin="0,60,0,0"
+        Margin="0,30,0,0"
         VerticalOptions="Start">
         <Label 
             Text="TVÉ MEDAILE"
             VerticalOptions="Start" 
             HorizontalOptions="Center" 
-            FontSize="36"/>
-        <Grid HorizontalOptions="Center" Padding="100,10,100,10">
+            FontSize="40">
+            <Label.Shadow>
+                <Shadow Brush="Black"
+                Offset="20,20"
+                Radius="40"
+                Opacity="0.8" />
+            </Label.Shadow>
+        </Label>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" MinimumWidthRequest="500" Padding="0,10,0,10" >
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -27,12 +34,14 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Image Source="gold.png" MaximumHeightRequest="145" HorizontalOptions="Start" Grid.Row="0" Grid.Column="0"/>
-            <Label x:Name="lbGold" FontSize="24" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"/>
+            <Label x:Name="lbGold" FontSize="30" HorizontalOptions="Center" FontAttributes="Bold" Grid.Row="0" Grid.Column="1"/>
+            
             <Image Source="silver.png" MaximumHeightRequest="135" HorizontalOptions="Center" Grid.Row="1" Grid.Column="0"/>
-            <Label x:Name="lbSilver" FontSize="24" HorizontalOptions="Center" Grid.Row="1" Grid.Column="1"/>
+            <Label x:Name="lbSilver" FontSize="29" HorizontalOptions="Center" FontAttributes="Bold" Grid.Row="1" Grid.Column="1"/>
+            
             <Image Source="bronze.png" MaximumHeightRequest="125" HorizontalOptions="End" Grid.Row="2" Grid.Column="0"/>
-            <Label x:Name="lbBronze" FontSize="24" HorizontalOptions="Center" Grid.Row="2" Grid.Column="1"/>
+            <Label x:Name="lbBronze" FontSize="28" HorizontalOptions="Center" FontAttributes="Bold" Grid.Row="2" Grid.Column="1"/>
         </Grid>
-        <Button Text="ZPĚT" x:Name="btnMenu" HorizontalOptions="Center" VerticalOptions="Start" Clicked="btnMenu_Clicked"/>
+        <Button Text="ZPĚT" x:Name="btnMenu" HorizontalOptions="Center" VerticalOptions="Start" Clicked="btnMenu_Clicked" FontSize="24" BackgroundColor="DarkCyan" MinimumWidthRequest="200"/>
     </VerticalStackLayout>
 </ContentPage>

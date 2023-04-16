@@ -42,31 +42,48 @@ public partial class ExamsInClassPage : ContentPage
     private async void lvSeznamZadani_ItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
 		string vybraneZad = (lvSeznamZadani.SelectedItem as string);
-		string pin = "";
+		string emojiString = "";
 		int indexCary = vybraneZad.IndexOf('|');
-		pin = vybraneZad.Substring(indexCary+1);
-        int indexCary2 = pin.IndexOf('|');
-        pin = pin.Substring(0, indexCary2);
-        string emojiString = "";
-        for (int i = 0; i < pin.Length; i++)
+        emojiString = vybraneZad.Substring(indexCary+1);
+        int indexCary2 = emojiString.IndexOf('|');
+        emojiString = emojiString.Substring(0, indexCary2);
+        string pin = "";
+        for (int i = 0; i < emojiString.Length; i++)
         {
-            char vec = pin[i];
+            char vec = emojiString[i];
             int hodnotaZnaku = vec;
             switch(hodnotaZnaku)
             {
-                case 9727 or 9728:
+                case 57152:
                     pin += "1";
                     break;
-                case 55357:
+                case 56474:
                     pin += "2";
                     break;
-                case 56474:
+                case 57141:
                     pin += "3";
                     break;
-                
+                case 10084:
+                    pin += "4";
+                    break;
+                case 56359:
+                    pin += "5";
+                    break;
+                case 56473:
+                    pin += "6";
+                    break;
+                case 9727 or 9728:
+                    pin += "7";
+                    break;
+                case 56647:
+                    pin += "8";
+                    break;
+                case 57113:
+                    pin += "9";
+                    break;
+
             }
         }
-        await DisplayAlert("OK", pin, "xd");
         if (nactenaZadaniTridy != null)
         {
             try
